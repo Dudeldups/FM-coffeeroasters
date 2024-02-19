@@ -1,6 +1,10 @@
 import { SubmitHandler, useForm, FieldValues } from "react-hook-form";
 
 import heroImgSubscribeMobile from "../assets/plan/mobile/image-hero-blackcup.jpg";
+import heroImgSubscribeTablet from "../assets/plan/tablet/image-hero-blackcup.jpg";
+import heroImgSubscribeDesktop from "../assets/plan/desktop/image-hero-blackcup.jpg";
+
+import subsciptionData from "../data/subscriptions.json";
 
 const Subscribe = () => {
   const {
@@ -21,6 +25,8 @@ const Subscribe = () => {
     <section>
       <div>
         <picture>
+          <source srcSet={heroImgSubscribeDesktop} media="(min-width: 64rem)" />
+          <source srcSet={heroImgSubscribeTablet} media="(min-width: 48rem)" />
           <img src={heroImgSubscribeMobile} alt="" />
         </picture>
         <article>
@@ -63,6 +69,29 @@ const Subscribe = () => {
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)}>
+        {subsciptionData.map((formStep) => (
+          <fieldset key={formStep.id} className="my-5">
+            <legend>{formStep.question}</legend>
+            {formStep.options.map(({ name, description }) => {
+              const optionName = name.split(" ").join("");
+              return (
+                <div key={optionName}>
+                  <input
+                    {...register(formStep.name)}
+                    type="radio"
+                    id={formStep.id + "-" + optionName}
+                    value={name}
+                  />
+                  <label htmlFor={formStep.id + "-" + optionName}>
+                    <span className="block font-bold">{name}</span>{" "}
+                    {description}
+                  </label>
+                </div>
+              );
+            })}
+          </fieldset>
+        ))}
+
         <fieldset>
           <legend>How do you drink your coffee?</legend>
           <div>
@@ -140,8 +169,15 @@ const Subscribe = () => {
             "I drink my coffee{" "}
             {isCapsuleSelected
               ? "using Capsules"
-              : `as ${watch("how") || "as _____"}`}
-            , with a {watch("type") || "_____"} type of bean."
+              : `as ${watch("Preferences") || "as _____"}`}
+            , with a {watch("Bean Type") || "_____"} type of bean.{" "}
+            {watch("Quantity")}
+            {watch("Preferences") !== "Capsule"
+              ? watch("Grind Option")
+                ? ` ground ala ${watch("Grind Option")}`
+                : " ground ala _____"
+              : ""}
+            , sent to me {watch("Deliveries") || "_____"}."
           </p>
         </div>
 

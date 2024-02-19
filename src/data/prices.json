@@ -1,0 +1,23 @@
+[
+  {
+    "250g": [
+      { "Every week": 7.2 },
+      { "Every 2 weeks": 9.6 },
+      { "Every month": 12.0 }
+    ]
+  },
+  {
+    "500g": [
+      { "Every week": 13.0 },
+      { "Every 2 weeks": 17.5 },
+      { "Every month": 22.0 }
+    ]
+  },
+  {
+    "1000g": [
+      { "Every week": 22.0 },
+      { "Every 2 weeks": 32.0 },
+      { "Every month": 42.0 }
+    ]
+  }
+]
