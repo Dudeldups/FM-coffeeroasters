@@ -39,9 +39,6 @@ const SubscribeForm = () => {
     },
   };
 
-  const isCapsuleSelected = watch("how") === "Capsule";
-  const quantity = watch("quantity") as keyof Prices;
-
   const className = {
     fieldset: "my-6",
     input: "sr-only peer",
@@ -50,9 +47,20 @@ const SubscribeForm = () => {
     "inside-div": ``,
   };
 
-  console.log(watch("preferences"));
-  console.log(watch("beanType"));
-  console.log(watch("quantity"));
+  const quantity = watch("quantity") as keyof Prices;
+
+  const isCapsuleSelected = watch("preferences") === "Capsule";
+  const isPreferencesSelected =
+    watch("preferences") !== undefined && watch("preferences") !== null;
+  const isBeanTypeSelected =
+    watch("beanType") !== undefined && watch("beanType") !== null;
+  const isQuantitySelected =
+    watch("quantity") !== undefined && watch("quantity") !== null;
+  const isGrindOptionSelected =
+    watch("grindOption") !== undefined && watch("grindOption") !== null;
+
+  const isEverythingForDeliveriesSelected =
+    (isCapsuleSelected && isQuantitySelected) || isGrindOptionSelected;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -104,11 +112,11 @@ const SubscribeForm = () => {
 
       <fieldset
         className={className.fieldset}
-        aria-expanded={watch("preferences") !== undefined}
+        aria-expanded={isPreferencesSelected}
         aria-live="polite"
       >
         <legend>What type of coffee?</legend>
-        {watch("preferences") && (
+        {isPreferencesSelected && (
           <div>
             <div className={className["inside-div"]}>
               <input
@@ -161,11 +169,11 @@ const SubscribeForm = () => {
 
       <fieldset
         className={className.fieldset}
-        aria-expanded={watch("preferences") !== undefined}
+        aria-expanded={isBeanTypeSelected}
         aria-live="polite"
       >
         <legend>How much would you like?</legend>
-        {watch("beanType") && (
+        {isBeanTypeSelected && (
           <div>
             <div>
               <input
@@ -214,11 +222,11 @@ const SubscribeForm = () => {
 
       <fieldset
         className={className.fieldset}
-        aria-expanded={watch("preferences") !== undefined}
+        aria-expanded={isQuantitySelected}
         aria-live="polite"
       >
         <legend>Want us to grind them?</legend>
-        {watch("quantity") && !isCapsuleSelected && (
+        {isQuantitySelected && !isCapsuleSelected && (
           <div>
             <div>
               <input
@@ -273,11 +281,11 @@ const SubscribeForm = () => {
 
       <fieldset
         className={className.fieldset}
-        aria-expanded={watch("preferences") !== undefined}
+        aria-expanded={isGrindOptionSelected}
         aria-live="polite"
       >
         <legend>How often should we deliver?</legend>
-        {watch("grindOption") && (
+        {isEverythingForDeliveriesSelected && (
           <div>
             <div>
               <input
