@@ -1,5 +1,11 @@
+import { useEffect } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
+interface SubscribeFormProps {
+  summaryString: string;
+  setSummaryString: React.Dispatch<React.SetStateAction<string>>;
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
 interface Prices {
   [key: string]: {
     everyWeek: number;
@@ -8,7 +14,11 @@ interface Prices {
   };
 }
 
-const SubscribeForm = () => {
+const SubscribeForm = ({
+  summaryString,
+  setSummaryString,
+  setIsModalOpen,
+}: SubscribeFormProps) => {
   const {
     register,
     handleSubmit,
@@ -18,6 +28,7 @@ const SubscribeForm = () => {
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
+    setIsModalOpen(true);
     console.log(data);
   };
 
@@ -44,7 +55,7 @@ const SubscribeForm = () => {
     input: "sr-only peer",
     label: "block peer-checked:bg-slate-300",
     "label-span": "block font-bold",
-    "inside-div": ``,
+    "inner-div": ``,
   };
 
   const quantity = watch("quantity") as keyof Prices;
@@ -58,16 +69,43 @@ const SubscribeForm = () => {
     watch("quantity") !== undefined && watch("quantity") !== null;
   const isGrindOptionSelected =
     watch("grindOption") !== undefined && watch("grindOption") !== null;
+  const isDeliveriesSelected =
+    watch("deliveries") !== undefined && watch("deliveries") !== null;
 
   const isEverythingForDeliveriesSelected =
     (isCapsuleSelected && isQuantitySelected) || isGrindOptionSelected;
+
+  useEffect(() => {
+    setSummaryString(
+      `"I drink my coffee ${
+        isCapsuleSelected
+          ? "using Capsules"
+          : `as ${watch("preferences") || "_____"}`
+      }, with a ${watch("beanType") || "_____"} type of bean. ${
+        watch("quantity") || "_____"
+      }${
+        !isCapsuleSelected
+          ? watch("grindOption")
+            ? ` ground ala ${watch("grindOption")}`
+            : " ground ala _____"
+          : ""
+      }, sent to me ${watch("deliveries") || "_____"}.`,
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    isPreferencesSelected,
+    isBeanTypeSelected,
+    isQuantitySelected,
+    isGrindOptionSelected,
+    isDeliveriesSelected,
+  ]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <fieldset className={className.fieldset}>
         <legend className="peer">How do you drink your coffee?</legend>
 
-        <div className={className["inside-div"]}>
+        <div className={className["inner-div"]}>
           <input
             className={className.input}
             {...register("preferences", { required: true })}
@@ -81,7 +119,7 @@ const SubscribeForm = () => {
           </label>
         </div>
 
-        <div className={className["inside-div"]}>
+        <div className={className["inner-div"]}>
           <input
             className={className.input}
             {...register("preferences", { required: true })}
@@ -95,7 +133,7 @@ const SubscribeForm = () => {
           </label>
         </div>
 
-        <div className={className["inside-div"]}>
+        <div className={className["inner-div"]}>
           <input
             className={className.input}
             {...register("preferences", { required: true })}
@@ -118,7 +156,7 @@ const SubscribeForm = () => {
         <legend>What type of coffee?</legend>
         {isPreferencesSelected && (
           <div>
-            <div className={className["inside-div"]}>
+            <div className={className["inner-div"]}>
               <input
                 className={className.input}
                 {...register("beanType", { required: true })}
@@ -135,7 +173,7 @@ const SubscribeForm = () => {
               </label>
             </div>
 
-            <div className={className["inside-div"]}>
+            <div className={className["inner-div"]}>
               <input
                 className={className.input}
                 {...register("beanType", { required: true })}
@@ -149,7 +187,7 @@ const SubscribeForm = () => {
               </label>
             </div>
 
-            <div className={className["inside-div"]}>
+            <div className={className["inner-div"]}>
               <input
                 className={className.input}
                 {...register("beanType", { required: true })}
@@ -344,7 +382,7 @@ const SubscribeForm = () => {
       <div className="mt-4">
         <h2>Order summary</h2>
         <p>
-          "I drink my coffee{" "}
+          {/* "I drink my coffee{" "}
           {isCapsuleSelected
             ? "using Capsules"
             : `as ${watch("preferences") || "_____"}`}
@@ -355,7 +393,8 @@ const SubscribeForm = () => {
               ? ` ground ala ${watch("grindOption")}`
               : " ground ala _____"
             : ""}
-          , sent to me {watch("deliveries") || "_____"}."
+          , sent to me {watch("deliveries") || "_____"}." */}
+          {summaryString}
         </p>
       </div>
 
