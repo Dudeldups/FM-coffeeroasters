@@ -1,8 +1,17 @@
+// import { plugin } from "tailwindcss/plugin";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      screens: {
+        mobile: { max: "39.9375rem" },
+        sm: "30rem",
+        md: "40rem",
+        lg: "60rem",
+        xl: "80rem",
+      },
       colors: {
         custom: {
           "dark-cyan": "#0E8784",
@@ -18,5 +27,11 @@ export default {
       },
     },
   },
-  plugins: [],
+
+  plugins: [
+    // plugin(function ({ addVariant }) {
+    //   addVariant("hocus", ["&:hover", "&:focus"]);
+    //   addVariant("beafter", ["&:after", "&:before"]);
+    // }),
+  ],
 };

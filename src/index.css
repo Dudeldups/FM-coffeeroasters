@@ -22,3 +22,16 @@
   font-weight: 400;
   font-style: normal;
 }
+
+@layer base {
+  body {
+    @apply font-barlow text-base font-normal leading-[1.625rem];
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-fraunces text-2xl font-black;
+  }
+}
