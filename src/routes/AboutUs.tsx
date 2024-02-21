@@ -1,12 +1,21 @@
 import heroImgAboutMobile from "../assets/about/mobile/image-hero-whitecup.jpg";
+import heroImgAboutTablet from "../assets/about/tablet/image-hero-whitecup.jpg";
+import heroImgAboutDesktop from "../assets/about/desktop/image-hero-whitecup.jpg";
 import commitmentImgMobile from "../assets/about/mobile/image-commitment.jpg";
+import commitmentImgTablet from "../assets/about/tablet/image-commitment.jpg";
+import commitmentImgDesktop from "../assets/about/desktop/image-commitment.jpg";
 
 const AboutUs = () => {
   return (
     <section>
       <div>
         <picture>
-          <img src={heroImgAboutMobile} alt="" />
+          <source srcSet={heroImgAboutDesktop} media="(min-width: 64rem)" />
+          <source srcSet={heroImgAboutTablet} media="(min-width: 48rem)" />
+          <img
+            src={heroImgAboutMobile}
+            alt="A neatly decorated coffe viewed from above"
+          />
         </picture>
 
         <article>
@@ -22,7 +31,12 @@ const AboutUs = () => {
 
       <div>
         <picture>
-          <img src={commitmentImgMobile} alt="" />
+          <source srcSet={commitmentImgDesktop} media="(min-width: 64rem)" />
+          <source srcSet={commitmentImgTablet} media="(min-width: 48rem)" />
+          <img
+            src={commitmentImgMobile}
+            alt="A barrista decorates the top of a latte with a pattern."
+          />
         </picture>
         <h2>Our commitment</h2>
         <p>
@@ -57,21 +71,34 @@ const AboutUs = () => {
         <ul>
           <li>
             <img src="" alt="" />
-            <h3>United Kingdom</h3>
-            <address>68 Asfordby Rd Alcaston SY6 1YA +44 1241 918425</address>
-          </li>
-          <li>
-            <img src="" alt="" />
-            <h3>Canada</h3>
             <address>
-              1528 Eglinton Avenue Toronto Ontario M4P 1A6 +1 416 485 2997
+              <span className="block font-bold">United Kingdom</span>
+              <span className="block">68 Asfordby Rd</span>
+              <span className="block">Alcaston</span>
+              <span className="block">SY6 1YA</span>
+              <span className="block">+44 1241 918425</span>
             </address>
           </li>
+
           <li>
             <img src="" alt="" />
-            <h3>Australia</h3>
             <address>
-              36 Swanston Street Kewell Victoria +61 4 9928 3629
+              <span className="block font-bold">Canada</span>
+              <span className="block">1528 Eglinton Avenue</span>
+              <span className="block">Toronto</span>
+              <span className="block">Ontario M4P 1A6</span>
+              <span className="block">+1 416 485 2997</span>
+            </address>
+          </li>
+
+          <li>
+            <img src="" alt="" />
+            <address>
+              <span className="block font-bold">Australia</span>
+              <span className="block">36 Swanston Street</span>
+              <span className="block">Kewell</span>
+              <span className="block">Victoria</span>
+              <span className="block">+61 4 9928 3629</span>
             </address>
           </li>
         </ul>
