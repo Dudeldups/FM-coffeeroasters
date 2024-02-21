@@ -19,11 +19,12 @@ export default {
           "pale-orange": "#FDD6BA",
           "light-cream": "#FEFCF7",
           grey: "#83888F",
+          "light-grey": "#B7C0CE",
         },
       },
       fontFamily: {
         barlow: ["Barlow", "sans-serif"],
-        fraunces: ["Faunces", "serif"],
+        fraunces: ["Fraunces", "serif"],
       },
     },
   },

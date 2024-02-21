@@ -25,7 +25,7 @@
 
 @layer base {
   body {
-    @apply font-barlow text-base font-normal leading-[1.625rem];
+    @apply bg-custom-light-cream font-barlow text-base font-normal leading-[1.625rem];
   }
 
   h1,
