@@ -4,6 +4,9 @@ import Facebook from "./logos/Facebook";
 import Instagram from "./logos/Instagram";
 import Twitter from "./logos/Twitter";
 
+//TODO: Add the correct links to the footer
+//TODO: Add hover and focus states to the links
+
 const Footer = () => {
   return (
     <footer className="mb-[40rem] flex justify-center px-6 sm:px-10">
