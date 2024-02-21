@@ -7,6 +7,9 @@ import commitmentImgDesktop from "../assets/about/desktop/image-commitment.jpg";
 import qualityImgMobile from "../assets/about/mobile/image-quality.jpg";
 import qualityImgTablet from "../assets/about/tablet/image-quality.jpg";
 import qualityImgDesktop from "../assets/about/desktop/image-quality.jpg";
+import ukImg from "../assets/about/desktop/illustration-uk.svg";
+import canadaImg from "../assets/about/desktop/illustration-canada.svg";
+import australiaImg from "../assets/about/desktop/illustration-australia.svg";
 
 const AboutUs = () => {
   return (
@@ -80,7 +83,7 @@ const AboutUs = () => {
         <h2>Our headquarters</h2>
         <ul>
           <li>
-            <img src="" alt="" />
+            <img src={ukImg} alt="" aria-hidden="true" />
             <address>
               <span className="block font-bold">United Kingdom</span>
               <span className="block">68 Asfordby Rd</span>
@@ -91,7 +94,7 @@ const AboutUs = () => {
           </li>
 
           <li>
-            <img src="" alt="" />
+            <img src={canadaImg} alt="" aria-hidden="true" />
             <address>
               <span className="block font-bold">Canada</span>
               <span className="block">1528 Eglinton Avenue</span>
@@ -102,7 +105,7 @@ const AboutUs = () => {
           </li>
 
           <li>
-            <img src="" alt="" />
+            <img src={australiaImg} alt="" aria-hidden="true" />
             <address>
               <span className="block font-bold">Australia</span>
               <span className="block">36 Swanston Street</span>

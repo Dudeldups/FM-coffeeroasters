@@ -1,11 +1,27 @@
 import heroImgHomeMobile from "../assets/home/mobile/image-hero-coffeepress.jpg";
+import heroImgHomeTablet from "../assets/home/tablet/image-hero-coffeepress.jpg";
+import heroImgHomeDesktop from "../assets/home/desktop/image-hero-coffeepress.jpg";
+
+import granEspressoImg from "../assets/home/desktop/image-gran-espresso.png";
+import planaltoImg from "../assets/home/desktop/image-planalto.png";
+import piccolloImg from "../assets/home/desktop/image-piccollo.png";
+import dancheImg from "../assets/home/desktop/image-danche.png";
+
+import beanImg from "../assets/home/desktop/icon-coffee-bean.svg";
+import giftImg from "../assets/home/desktop/icon-gift.svg";
+import truckImg from "../assets/home/desktop/icon-truck.svg";
 
 const Home = () => {
   return (
     <section>
       <div>
         <picture>
-          <img src={heroImgHomeMobile} alt="" />
+          <source srcSet={heroImgHomeDesktop} media="(min-width: 64rem)" />
+          <source srcSet={heroImgHomeTablet} media="(min-width: 48rem)" />
+          <img
+            src={heroImgHomeMobile}
+            alt="An antique coffee press, a glass and coffee beans lying around it."
+          />
         </picture>
         <article>
           <h1>Great coffee made simple.</h1>
@@ -23,70 +39,94 @@ const Home = () => {
 
         <ul>
           <li>
-            <h3>Gran Espresso</h3>
-            <p>
-              Light and flavorful blend with cocoa and black pepper for an
-              intense experience
-            </p>
+            <img src={granEspressoImg} alt="" aria-hidden="true" />
+            <div>
+              <h3 className="font-bold">Gran Espresso</h3>
+              <p>
+                Light and flavorful blend with cocoa and black pepper for an
+                intense experience
+              </p>
+            </div>
           </li>
 
           <li>
-            <h3>Planalto</h3>
-            <p>
-              Brazilian dark roast with rich and velvety body, and hints of
-              fruits and nuts
-            </p>
+            <img src={planaltoImg} alt="" aria-hidden="true" />
+            <div>
+              <h3 className="font-bold">Planalto</h3>
+              <p>
+                Brazilian dark roast with rich and velvety body, and hints of
+                fruits and nuts
+              </p>
+            </div>
           </li>
 
           <li>
-            <h3>Piccollo</h3>
-            <p>
-              Mild and smooth blend featuring notes of toasted almond and dried
-              cherry{" "}
-            </p>
+            <img src={piccolloImg} alt="" aria-hidden="true" />
+            <div>
+              <h3 className="font-bold">Piccollo</h3>
+              <p>
+                Mild and smooth blend featuring notes of toasted almond and
+                dried cherry{" "}
+              </p>
+            </div>
           </li>
 
           <li>
-            <h3>Danche</h3>
-            <p>
-              Ethiopian hand-harvested blend densely packed with vibrant fruit
-              notes
-            </p>
+            <img src={dancheImg} alt="" aria-hidden="true" />
+            <div>
+              <h3 className="font-bold">Danche</h3>
+              <p>
+                Ethiopian hand-harvested blend densely packed with vibrant fruit
+                notes
+              </p>
+            </div>
           </li>
         </ul>
       </div>
 
       <div>
-        <h2>Why choose us?</h2>
-        <p>
-          A large part of our role is choosing which particular coffees will be
-          featured in our range. This means working closely with the best coffee
-          growers to give you a more impactful experience on every level.
-        </p>
+        <div>
+          <h2>Why choose us?</h2>
+          <p>
+            A large part of our role is choosing which particular coffees will
+            be featured in our range. This means working closely with the best
+            coffee growers to give you a more impactful experience on every
+            level.
+          </p>
+        </div>
 
         <ul>
           <li>
-            <h3>Best quality</h3>
-            <p>
-              Discover an endless variety of the world’s best artisan coffee
-              from each of our roasters.
-            </p>
+            <img src={beanImg} alt="" aria-hidden="true" />
+            <div>
+              <h3>Best quality</h3>
+              <p>
+                Discover an endless variety of the world’s best artisan coffee
+                from each of our roasters.
+              </p>
+            </div>
           </li>
 
           <li>
-            <h3>Exclusive benefits</h3>
-            <p>
-              Special offers and swag when you subscribe, including 30% off your
-              first shipment.
-            </p>
+            <img src={giftImg} alt="" aria-hidden="true" />
+            <div>
+              <h3>Exclusive benefits</h3>
+              <p>
+                Special offers and swag when you subscribe, including 30% off
+                your first shipment.
+              </p>
+            </div>
           </li>
 
           <li>
-            <h3>Free shipping</h3>
-            <p>
-              We cover the cost and coffee is delivered fast. Peak freshness:
-              guaranteed.
-            </p>
+            <img src={truckImg} alt="" aria-hidden="true" />
+            <div>
+              <h3>Free shipping</h3>
+              <p>
+                We cover the cost and coffee is delivered fast. Peak freshness:
+                guaranteed.
+              </p>
+            </div>
           </li>
         </ul>
       </div>

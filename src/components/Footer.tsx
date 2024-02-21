@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import coffeeroastersLogo from "../assets/shared/desktop/logo.svg";
 import Facebook from "./logos/Facebook";
+import Instagram from "./logos/Instagram";
+import Twitter from "./logos/Twitter";
 
 const Footer = () => {
   return (
@@ -26,8 +28,12 @@ const Footer = () => {
           <li>
             <Facebook />
           </li>
-          <li>Social</li>
-          <li>Social</li>
+          <li>
+            <Twitter />
+          </li>
+          <li>
+            <Instagram />
+          </li>
         </ul>
       </div>
     </footer>
