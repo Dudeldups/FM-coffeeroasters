@@ -11,6 +11,7 @@ import beanImg from "../assets/home/desktop/icon-coffee-bean.svg";
 import giftImg from "../assets/home/desktop/icon-gift.svg";
 import truckImg from "../assets/home/desktop/icon-truck.svg";
 import Btn from "../components/Btn";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -31,7 +32,9 @@ const Home = () => {
             curated artisan coffees from our best roasters delivered directly to
             your door, at your schedule.
           </p>
-          <Btn>Create your plan</Btn>
+          <Link to="/subscribe">
+            <Btn>Create your plan</Btn>
+          </Link>
         </article>
       </div>
 
