@@ -6,11 +6,11 @@ export default {
   theme: {
     extend: {
       screens: {
-        mobile: { max: "39.9375rem" },
-        sm: "30rem",
-        md: "40rem",
-        lg: "60rem",
-        xl: "80rem",
+        mobile: { max: "39.9375em" },
+        sm: "30em",
+        md: "40em",
+        lg: "60em",
+        xl: "80em",
       },
       colors: {
         custom: {
