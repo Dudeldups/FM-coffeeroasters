@@ -10,6 +10,7 @@ import dancheImg from "../assets/home/desktop/image-danche.png";
 import beanImg from "../assets/home/desktop/icon-coffee-bean.svg";
 import giftImg from "../assets/home/desktop/icon-gift.svg";
 import truckImg from "../assets/home/desktop/icon-truck.svg";
+import Btn from "../components/Btn";
 
 const Home = () => {
   return (
@@ -30,7 +31,7 @@ const Home = () => {
             curated artisan coffees from our best roasters delivered directly to
             your door, at your schedule.
           </p>
-          <button>Create your plan</button>
+          <Btn>Create your plan</Btn>
         </article>
       </div>
 
@@ -163,7 +164,7 @@ const Home = () => {
           </li>
         </ol>
 
-        <button>Create your plan</button>
+        <Btn>Create your plan</Btn>
       </div>
     </section>
   );
