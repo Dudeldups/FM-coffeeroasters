@@ -43,10 +43,10 @@ const Header = () => {
       <nav
         id="nav-list"
         aria-live="polite"
-        className={`navbar via:50% mobile:absolute mobile:w-full mobile:-translate-x-6 mobile:translate-y-[4rem] mobile:bg-gradient-to-b mobile:from-custom-light-cream mobile:via-custom-light-cream mobile:font-fraunces mobile:text-2xl mobile:font-black mobile:transition-all mobile:duration-500 ${isHamburgerMenuOpen ? "mobile:h-screen" : "mobile:h-0"}`}
+        className={`navbar via-45% mobile:absolute mobile:w-full mobile:-translate-x-6 mobile:translate-y-[4rem] mobile:bg-gradient-to-b mobile:from-custom-light-cream mobile:via-custom-light-cream mobile:font-fraunces mobile:text-2xl mobile:font-black mobile:transition-all mobile:duration-500 ${isHamburgerMenuOpen ? "mobile:h-screen" : "mobile:h-0"}`}
       >
         <ul
-          className={`flex gap-7 duration-300 mobile:flex-col mobile:items-center mobile:pt-12 mobile:transition-opacity ${isHamburgerMenuOpen ? "opacity-100 duration-150" : "opacity-0"} ${showNavbar ? "block" : "hidden"}`}
+          className={`flex gap-7 duration-300 mobile:flex-col mobile:items-center mobile:pt-12 mobile:transition-opacity ${isHamburgerMenuOpen ? "duration-150 mobile:opacity-100" : "mobile:opacity-0"} ${showNavbar ? "" : "mobile:hidden"}`}
         >
           <li>
             <NavLink
