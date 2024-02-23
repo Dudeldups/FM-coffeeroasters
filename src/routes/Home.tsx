@@ -26,8 +26,8 @@ const Home = () => {
             alt="An antique coffee press, a glass and coffee beans lying around it."
           />
         </picture>
-        <article className="flex-col-center absolute inset-0 mx-auto h-full w-full  px-5 text-custom-light-cream md:ml-0 md:items-start md:px-[3.75rem] xl:px-[5rem] mobile:text-center">
-          <h1 className="max-w-[11ch] text-[2rem] leading-none md:text-[3rem] lg:text-[4.5rem] xs:text-[2.5rem]">
+        <article className="flex-col-center absolute inset-0 mx-auto h-full w-full  px-5 text-custom-light-cream mobile:text-center md:ml-0 md:items-start md:px-[3.75rem] xl:px-[5rem]">
+          <h1 className="max-w-[11ch] text-[2rem] leading-none xs:text-[2.5rem] md:text-[3rem] lg:text-[4.5rem]">
             Great coffee made simple.
           </h1>
           <p className="mb-10 mt-6 max-w-80 text-[.9375rem] leading-6 opacity-80 md:max-w-[25rem] lg:mb-14 lg:mt-8">
@@ -42,7 +42,7 @@ const Home = () => {
       </div>
 
       <div className="relative mt-32 md:mt-40 lg:mt-44">
-        <h2 className="absolute -z-10 w-full bg-gradient-to-b from-custom-dark-grey bg-clip-text text-center text-[2.3rem] leading-none text-transparent sm:text-[3.8rem] md:text-[6rem] lg:text-[9rem] xl:text-[10.5rem] xs:text-[2.8rem]">
+        <h2 className="absolute -z-10 w-full bg-gradient-to-b from-custom-dark-grey bg-clip-text text-center text-[2.3rem] leading-none text-transparent xs:text-[2.8rem] sm:text-[3.8rem] md:text-[6rem] lg:text-[9rem] xl:text-[10.5rem]">
           our collection
         </h2>
 
@@ -113,10 +113,10 @@ const Home = () => {
         </ul>
       </div>
 
-      <div className="mt-28 grid">
-        <div className="bg-custom-dark-blue text-center text-custom-light-cream">
+      <div className="mt-28 grid text-custom-light-cream after:-z-10 after:col-[1_/_span_1] after:row-[1_/_span_2] after:rounded-lg after:bg-custom-dark-blue md:mt-36 xl:mt-48">
+        <div className="col-[1_/_span_1] row-[1_/_span_1] mx-auto max-w-[35rem] px-4 py-16 text-center xs:px-6 sm:px-8">
           <h2 className="text-[1.75rem] leading-none">Why choose us?</h2>
-          <p className="mt-6 text-[.9375rem] leading-[1.5625rem]">
+          <p className="col-[1_/_span_1] row-[2_/_span_1] mt-6 text-[.9375rem] leading-[1.5625rem] opacity-80">
             A large part of our role is choosing which particular coffees will
             be featured in our range. This means working closely with the best
             coffee growers to give you a more impactful experience on every
@@ -124,34 +124,34 @@ const Home = () => {
           </p>
         </div>
 
-        <ul>
-          <li>
+        <ul className="col-[1_/_span_1] row-[2_/_span_2] mx-auto grid justify-center gap-6 px-4 xs:px-6 sm:px-8 lg:grid-flow-col lg:px-4 xl:max-w-[68rem] xl:gap-8">
+          <li className="flex-col-center max-w-[20rem] gap-14 rounded-lg bg-custom-dark-cyan px-4 pb-12 pt-16 sm:px-10 md:max-w-[38rem] md:flex-row md:px-14 md:py-10 lg:flex-col lg:px-5 lg:pb-12 lg:pt-16 xl:px-12">
             <img src={beanImg} alt="" aria-hidden="true" />
-            <div>
+            <div className="text-center md:text-left lg:text-center">
               <h3>Best quality</h3>
-              <p>
+              <p className="mt-6">
                 Discover an endless variety of the world’s best artisan coffee
                 from each of our roasters.
               </p>
             </div>
           </li>
 
-          <li>
+          <li className="flex-col-center max-w-[20rem] gap-14 rounded-lg bg-custom-dark-cyan px-4 pb-12 pt-16 sm:px-10 md:max-w-[38rem] md:flex-row md:px-14 md:py-10 lg:flex-col lg:px-5 lg:pb-12 lg:pt-16 xl:px-12">
             <img src={giftImg} alt="" aria-hidden="true" />
-            <div>
+            <div className="text-center md:text-left lg:text-center">
               <h3>Exclusive benefits</h3>
-              <p>
+              <p className="mt-6">
                 Special offers and swag when you subscribe, including 30% off
                 your first shipment.
               </p>
             </div>
           </li>
 
-          <li>
+          <li className="flex-col-center max-w-[20rem] gap-14 rounded-lg bg-custom-dark-cyan px-4 pb-12 pt-16 sm:px-10 md:max-w-[38rem] md:flex-row md:px-14 md:py-10 lg:flex-col lg:px-5 lg:pb-12 lg:pt-16 xl:px-12">
             <img src={truckImg} alt="" aria-hidden="true" />
-            <div>
+            <div className="text-center md:text-left lg:text-center">
               <h3>Free shipping</h3>
-              <p>
+              <p className="mt-6">
                 We cover the cost and coffee is delivered fast. Peak freshness:
                 guaranteed.
               </p>
