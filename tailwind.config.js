@@ -5,12 +5,13 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     screens: {
+      // "just-tablet": { min: "42.5em", max: "59.9375rem" },
       mobile: { max: "42.4375em" },
       xs: "23.4375em",
       sm: "30em",
       md: "42.5em",
       lg: "60em",
-      xl: "80em",
+      xl: "71.25rem",
     },
     extend: {
       colors: {
