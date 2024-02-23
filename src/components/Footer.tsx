@@ -9,7 +9,7 @@ import Twitter from "./logos/Twitter";
 
 const Footer = () => {
   return (
-    <footer className="w-full px-6 pb-10 md:px-10">
+    <footer className="w-full px-4 pb-10 xs:px-6 md:px-10">
       <div className="mx-auto flex max-w-7xl flex-col items-center bg-custom-dark-blue px-5 py-12 lg:flex-row lg:gap-14 lg:px-12 xl:gap-24 xl:px-20">
         <img
           className="w-52 sm:w-60"
