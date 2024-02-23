@@ -113,10 +113,10 @@ const Home = () => {
         </ul>
       </div>
 
-      <div>
-        <div>
-          <h2>Why choose us?</h2>
-          <p>
+      <div className="mt-28 grid">
+        <div className="bg-custom-dark-blue text-center text-custom-light-cream">
+          <h2 className="text-[1.75rem] leading-none">Why choose us?</h2>
+          <p className="mt-6 text-[.9375rem] leading-[1.5625rem]">
             A large part of our role is choosing which particular coffees will
             be featured in our range. This means working closely with the best
             coffee growers to give you a more impactful experience on every

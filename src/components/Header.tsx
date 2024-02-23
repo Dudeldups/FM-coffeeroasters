@@ -53,7 +53,7 @@ const Header = () => {
           >
             <li>
               <NavLink
-                className="md:text-sm md:font-bold md:uppercase md:tracking-[0.06rem] md:text-custom-dark-grey"
+                className="md:text-[.875rem] md:font-bold md:uppercase md:tracking-[0.06rem] md:text-custom-dark-grey"
                 to="/"
                 onClick={() => setIsHamburgerMenuOpen(false)}
               >
@@ -62,7 +62,7 @@ const Header = () => {
             </li>
             <li>
               <NavLink
-                className="md:text-sm md:font-bold md:uppercase md:tracking-[0.06rem] md:text-custom-dark-grey"
+                className="md:text-[.875rem] md:font-bold md:uppercase md:tracking-[0.06rem] md:text-custom-dark-grey"
                 to="/about"
                 onClick={() => setIsHamburgerMenuOpen(false)}
               >
@@ -71,7 +71,7 @@ const Header = () => {
             </li>
             <li>
               <NavLink
-                className="md:text-sm md:font-bold md:uppercase md:tracking-[0.06rem] md:text-custom-dark-grey"
+                className="md:text-[.875rem] md:font-bold md:uppercase md:tracking-[0.06rem] md:text-custom-dark-grey"
                 to="/subscribe"
                 onClick={() => setIsHamburgerMenuOpen(false)}
               >
