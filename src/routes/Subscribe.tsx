@@ -1,9 +1,9 @@
 import { useState } from "react";
 import SubscribeForm from "../components/SubscribeForm";
+import Modal from "../components/Modal";
 import heroImgSubscribeMobile from "../assets/plan/mobile/image-hero-blackcup.jpg";
 import heroImgSubscribeTablet from "../assets/plan/tablet/image-hero-blackcup.jpg";
 import heroImgSubscribeDesktop from "../assets/plan/desktop/image-hero-blackcup.jpg";
-import Modal from "../components/Modal";
 
 const Subscribe = () => {
   const [summaryString, setSummaryString] = useState<string>("");
@@ -17,8 +17,9 @@ const Subscribe = () => {
           <source srcSet={heroImgSubscribeTablet} media="(min-width: 48rem)" />
           <img src={heroImgSubscribeMobile} alt="" />
         </picture>
+
         <article>
-          <h1>Create plan</h1>
+          <h1 className="">Create plan</h1>
           <p>
             Coffee the way you wanted it to be. For coffee delivered tomorrow,
             or next week. For whatever brew method you use. For choice, for

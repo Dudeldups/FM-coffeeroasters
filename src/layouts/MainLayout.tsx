@@ -5,7 +5,7 @@ import ScrollToTop from "../components/ScrollToTop";
 
 const MainLayout = () => {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col items-center">
       <ScrollToTop />
 
       <Header />

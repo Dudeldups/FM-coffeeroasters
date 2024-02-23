@@ -167,7 +167,9 @@ const Home = () => {
           </li>
         </ol>
 
-        <Btn>Create your plan</Btn>
+        <Link to="/subscribe">
+          <Btn>Create your plan</Btn>
+        </Link>
       </div>
     </section>
   );
