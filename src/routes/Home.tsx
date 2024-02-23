@@ -26,7 +26,7 @@ const Home = () => {
             alt="An antique coffee press, a glass and coffee beans lying around it."
           />
         </picture>
-        <article className="flex-col-center absolute inset-0 mx-auto h-full w-full  px-5 text-custom-light-cream md:ml-0 md:items-start md:px-[3.75rem] mobile:text-center">
+        <article className="flex-col-center absolute inset-0 mx-auto h-full w-full  px-5 text-custom-light-cream md:ml-0 md:items-start md:px-[3.75rem] xl:px-[5rem] mobile:text-center">
           <h1 className="max-w-[11ch] text-[2rem] leading-none md:text-[3rem] lg:text-[4.5rem] xs:text-[2.5rem]">
             Great coffee made simple.
           </h1>
@@ -41,48 +41,70 @@ const Home = () => {
         </article>
       </div>
 
-      <div className="">
-        <h2>our collection</h2>
+      <div className="relative mt-32 md:mt-40 lg:mt-44">
+        <h2 className="absolute -z-10 w-full bg-gradient-to-b from-custom-dark-grey bg-clip-text text-center text-[2.3rem] leading-none text-transparent sm:text-[3.8rem] md:text-[6rem] lg:text-[9rem] xl:text-[10.5rem] xs:text-[2.8rem]">
+          our collection
+        </h2>
 
-        <ul>
-          <li>
-            <img src={granEspressoImg} alt="" aria-hidden="true" />
-            <div>
-              <h3 className="font-bold">Gran Espresso</h3>
-              <p>
+        <ul className="flex-col-center gap-12 pt-24 md:pt-16 lg:pt-24 xl:flex-row xl:items-start xl:gap-16 xl:pt-28">
+          <li className="flex-col-center gap-5 md:flex-row md:gap-9 xl:flex-col">
+            <img
+              className="max-w-[12rem] md:max-w-[14rem]"
+              src={granEspressoImg}
+              alt=""
+              aria-hidden="true"
+            />
+            <div className="max-w-[18rem] text-center md:text-left xl:text-center">
+              <h3 className="text-2xl">Gran Espresso</h3>
+              <p className="mt-4 text-[.9375rem] leading-[1.5625rem] md:mt-6 md:text-[1rem] md:leading-[1.625rem]">
                 Light and flavorful blend with cocoa and black pepper for an
                 intense experience
               </p>
             </div>
           </li>
 
-          <li>
-            <img src={planaltoImg} alt="" aria-hidden="true" />
-            <div>
-              <h3 className="font-bold">Planalto</h3>
-              <p>
+          <li className="flex-col-center gap-5 md:flex-row md:gap-9 xl:flex-col">
+            <img
+              className="max-w-[12rem] md:max-w-[14rem]"
+              src={planaltoImg}
+              alt=""
+              aria-hidden="true"
+            />
+            <div className="max-w-[18rem] text-center md:text-left xl:text-center">
+              <h3 className="text-2xl">Planalto</h3>
+              <p className="mt-4 text-[.9375rem] leading-[1.5625rem] md:mt-6 md:text-[1rem] md:leading-[1.625rem]">
                 Brazilian dark roast with rich and velvety body, and hints of
                 fruits and nuts
               </p>
             </div>
           </li>
 
-          <li>
-            <img src={piccolloImg} alt="" aria-hidden="true" />
-            <div>
-              <h3 className="font-bold">Piccollo</h3>
-              <p>
+          <li className="flex-col-center gap-5 md:flex-row md:gap-9 xl:flex-col">
+            <img
+              className="max-w-[12rem] md:max-w-[14rem]"
+              src={piccolloImg}
+              alt=""
+              aria-hidden="true"
+            />
+            <div className="max-w-[18rem] text-center md:text-left xl:text-center">
+              <h3 className="text-2xl">Piccollo</h3>
+              <p className="mt-4 text-[.9375rem] leading-[1.5625rem] md:mt-6 md:text-[1rem] md:leading-[1.625rem]">
                 Mild and smooth blend featuring notes of toasted almond and
                 dried cherry{" "}
               </p>
             </div>
           </li>
 
-          <li>
-            <img src={dancheImg} alt="" aria-hidden="true" />
-            <div>
-              <h3 className="font-bold">Danche</h3>
-              <p>
+          <li className="flex-col-center gap-5 md:flex-row md:gap-9 xl:flex-col">
+            <img
+              className="max-w-[12rem] md:max-w-[14rem]"
+              src={dancheImg}
+              alt=""
+              aria-hidden="true"
+            />
+            <div className="max-w-[18rem] text-center md:text-left xl:text-center">
+              <h3 className="text-2xl">Danche</h3>
+              <p className="mt-4 text-[.9375rem] leading-[1.5625rem] md:mt-6 md:text-[1rem] md:leading-[1.625rem]">
                 Ethiopian hand-harvested blend densely packed with vibrant fruit
                 notes
               </p>
