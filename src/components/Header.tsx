@@ -23,7 +23,7 @@ const Header = () => {
       <div className="relative mx-auto flex max-w-7xl py-8 lg:py-11">
         <Link to="/" className="mr-auto self-center">
           <img
-            className="max-w-40"
+            className="max-w-40 md:max-w-60"
             src={coffeeroastersLogo}
             alt="Coffeeroasters logo"
           />
@@ -53,7 +53,7 @@ const Header = () => {
           >
             <li>
               <NavLink
-                className="md:text-xs md:font-bold md:uppercase md:tracking-[0.06rem] md:text-custom-grey"
+                className="md:text-custom-dark-grey md:text-sm md:font-bold md:uppercase md:tracking-[0.06rem]"
                 to="/"
                 onClick={() => setIsHamburgerMenuOpen(false)}
               >
@@ -62,7 +62,7 @@ const Header = () => {
             </li>
             <li>
               <NavLink
-                className="md:text-xs md:font-bold md:uppercase md:tracking-[0.06rem] md:text-custom-grey"
+                className="md:text-custom-dark-grey md:text-sm md:font-bold md:uppercase md:tracking-[0.06rem]"
                 to="/about"
                 onClick={() => setIsHamburgerMenuOpen(false)}
               >
@@ -71,7 +71,7 @@ const Header = () => {
             </li>
             <li>
               <NavLink
-                className="md:text-xs md:font-bold md:uppercase md:tracking-[0.06rem] md:text-custom-grey"
+                className="md:text-custom-dark-grey md:text-sm md:font-bold md:uppercase md:tracking-[0.06rem]"
                 to="/subscribe"
                 onClick={() => setIsHamburgerMenuOpen(false)}
               >

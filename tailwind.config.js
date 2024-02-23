@@ -6,9 +6,9 @@ export default {
   theme: {
     extend: {
       screens: {
-        mobile: { max: "39.9375em" },
+        mobile: { max: "42.4375em" },
         sm: "30em",
-        md: "40em",
+        md: "42.5em",
         lg: "60em",
         xl: "80em",
       },
@@ -18,6 +18,7 @@ export default {
           "dark-blue": "#333D4B",
           "pale-orange": "#FDD6BA",
           "light-cream": "#FEFCF7",
+          "dark-grey": "#6B6E77",
           grey: "#83888F",
           "light-grey": "#B7C0CE",
         },
