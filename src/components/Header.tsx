@@ -19,7 +19,7 @@ const Header = () => {
   }, [isHamburgerMenuOpen]);
 
   return (
-    <header className="w-full px-6 md:px-10">
+    <header className="z-50 w-full px-6 md:px-10">
       <div className="relative mx-auto flex max-w-7xl py-8 lg:py-11">
         <Link to="/" className="mr-auto self-center">
           <img
@@ -46,14 +46,14 @@ const Header = () => {
         <nav
           id="nav-list"
           aria-live="polite"
-          className={`navbar via-45% mobile:absolute mobile:w-full mobile:-translate-x-6 mobile:translate-y-[4rem] mobile:bg-gradient-to-b mobile:from-custom-light-cream mobile:via-custom-light-cream mobile:font-fraunces mobile:text-2xl mobile:font-black mobile:transition-all mobile:duration-500 ${isHamburgerMenuOpen ? "mobile:h-screen" : "mobile:h-0"}`}
+          className={`navbar via-45% mobile:absolute mobile:w-full  mobile:translate-y-[4rem] mobile:bg-gradient-to-b mobile:from-custom-light-cream mobile:via-custom-light-cream mobile:font-fraunces mobile:text-2xl mobile:font-black mobile:transition-all mobile:duration-500 ${isHamburgerMenuOpen ? "mobile:h-screen" : "mobile:h-0"}`}
         >
           <ul
             className={`flex gap-7 duration-300 md:gap-8 mobile:flex-col mobile:items-center mobile:pt-12 mobile:transition-opacity ${isHamburgerMenuOpen ? "duration-150 mobile:opacity-100" : "mobile:opacity-0"} ${showNavbar ? "" : "mobile:hidden"}`}
           >
             <li>
               <NavLink
-                className="md:text-custom-dark-grey md:text-sm md:font-bold md:uppercase md:tracking-[0.06rem]"
+                className="md:text-sm md:font-bold md:uppercase md:tracking-[0.06rem] md:text-custom-dark-grey"
                 to="/"
                 onClick={() => setIsHamburgerMenuOpen(false)}
               >
@@ -62,7 +62,7 @@ const Header = () => {
             </li>
             <li>
               <NavLink
-                className="md:text-custom-dark-grey md:text-sm md:font-bold md:uppercase md:tracking-[0.06rem]"
+                className="md:text-sm md:font-bold md:uppercase md:tracking-[0.06rem] md:text-custom-dark-grey"
                 to="/about"
                 onClick={() => setIsHamburgerMenuOpen(false)}
               >
@@ -71,7 +71,7 @@ const Header = () => {
             </li>
             <li>
               <NavLink
-                className="md:text-custom-dark-grey md:text-sm md:font-bold md:uppercase md:tracking-[0.06rem]"
+                className="md:text-sm md:font-bold md:uppercase md:tracking-[0.06rem] md:text-custom-dark-grey"
                 to="/subscribe"
                 onClick={() => setIsHamburgerMenuOpen(false)}
               >

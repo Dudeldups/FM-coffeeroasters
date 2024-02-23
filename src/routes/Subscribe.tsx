@@ -10,16 +10,16 @@ const Subscribe = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   return (
-    <section>
+    <section className="max-w-7xl">
       <div>
         <picture>
-          <source srcSet={heroImgSubscribeDesktop} media="(min-width: 64rem)" />
-          <source srcSet={heroImgSubscribeTablet} media="(min-width: 48rem)" />
+          <source srcSet={heroImgSubscribeDesktop} media="(min-width: 60em)" />
+          <source srcSet={heroImgSubscribeTablet} media="(min-width: 42.5em)" />
           <img src={heroImgSubscribeMobile} alt="" />
         </picture>
 
         <article>
-          <h1 className="">Create plan</h1>
+          <h1 className="">Create a plan</h1>
           <p>
             Coffee the way you wanted it to be. For coffee delivered tomorrow,
             or next week. For whatever brew method you use. For choice, for
@@ -28,7 +28,8 @@ const Subscribe = () => {
         </article>
       </div>
 
-      <div>
+      <div className="relative">
+        <div className="absolute -z-10 h-full w-screen -translate-x-6 bg-custom-light-grey md:-translate-x-10"></div>
         <ol>
           <li>
             <h2>Pick your coffee</h2>

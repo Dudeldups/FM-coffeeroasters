@@ -4,14 +4,15 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    screens: {
+      mobile: { max: "42.4375em" },
+      xs: "23.4375em",
+      sm: "30em",
+      md: "42.5em",
+      lg: "60em",
+      xl: "80em",
+    },
     extend: {
-      screens: {
-        mobile: { max: "42.4375em" },
-        sm: "30em",
-        md: "42.5em",
-        lg: "60em",
-        xl: "80em",
-      },
       colors: {
         custom: {
           "dark-cyan": "#0E8784",

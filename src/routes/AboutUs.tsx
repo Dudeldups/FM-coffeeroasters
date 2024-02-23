@@ -13,11 +13,11 @@ import australiaImg from "../assets/about/desktop/illustration-australia.svg";
 
 const AboutUs = () => {
   return (
-    <section>
+    <section className="max-w-7xl">
       <div>
         <picture>
-          <source srcSet={heroImgAboutDesktop} media="(min-width: 64rem)" />
-          <source srcSet={heroImgAboutTablet} media="(min-width: 48rem)" />
+          <source srcSet={heroImgAboutDesktop} media="(min-width: 60em)" />
+          <source srcSet={heroImgAboutTablet} media="(min-width: 42.5em)" />
           <img
             src={heroImgAboutMobile}
             alt="A neatly decorated coffe viewed from above"
@@ -37,8 +37,8 @@ const AboutUs = () => {
 
       <div>
         <picture>
-          <source srcSet={commitmentImgDesktop} media="(min-width: 64rem)" />
-          <source srcSet={commitmentImgTablet} media="(min-width: 48rem)" />
+          <source srcSet={commitmentImgDesktop} media="(min-width: 60em)" />
+          <source srcSet={commitmentImgTablet} media="(min-width: 42.5em)" />
           <img
             src={commitmentImgMobile}
             alt="A barrista decorates the top of a latte with a pattern."
