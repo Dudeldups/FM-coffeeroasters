@@ -65,15 +65,17 @@ const AboutUs = () => {
         </div>
       </div>
 
-      <div className="max-w-[70rem]">
-        <picture>
-          <source srcSet={qualityImgDesktop} media="(min-width: 64rem)" />
-          <source srcSet={qualityImgTablet} media="(min-width: 48rem)" />
-          <img src={qualityImgMobile} alt="" />
+      <div className="mt-28 grid w-[min(100%,_70rem)] rounded-lg text-custom-light-cream after:-z-10 after:col-[1_/_span_1] after:row-[2_/_span_2] after:rounded-lg after:bg-custom-dark-blue md:mt-36 lg:mt-40 lg:max-w-[70rem] lg:grid-cols-[15fr_12fr] lg:grid-rows-[clamp(1.5rem,_-10.5rem_+_20vw,_5.5rem)_1fr_clamp(1.5rem,_-10.5rem_+_20vw,_5.5rem)] lg:gap-x-[clamp(3rem,_-23.5rem_+_44.44vw,_8rem)] lg:after:col-[1_/_span_2] lg:after:row-[2_/_span_2] lg:after:-mx-20">
+        <picture className="col-[1_/_span_1] row-[1_/_span_2] px-6 sm:px-14 lg:col-[2_/_span_1] lg:row-[1_/_span_2] lg:px-0">
+          <source srcSet={qualityImgDesktop} media="(min-width: 60em)" />
+          <source srcSet={qualityImgTablet} media="(min-width: 48em)" />
+          <img className="mx-auto rounded-lg" src={qualityImgMobile} alt="" />
         </picture>
-        <div>
-          <h2>Uncompromising quality</h2>
-          <p>
+        <div className="col-[1_/_span_1] row-[3_/_span_1] mx-auto px-6 text-center sm:px-14 lg:col-[1_/_span_1] lg:row-[2_/_span_1] lg:px-0 lg:text-left">
+          <h2 className="mt-16 text-lg leading-none xs:text-[1.75rem] md:text-xl xl:mt-24 xl:text-2xl">
+            Uncompromising quality
+          </h2>
+          <p className="mb-14 mt-6 max-w-[66ch] opacity-80">
             Although we work with growers who pay close attention to all stages
             of harvest and processing, we employ, on our end, a rigorous quality
             control program to avoid over-roasting or baking the coffee dry.
