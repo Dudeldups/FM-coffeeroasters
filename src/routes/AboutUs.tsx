@@ -86,39 +86,99 @@ const AboutUs = () => {
         </div>
       </div>
 
-      <div>
-        <h2>Our headquarters</h2>
-        <ul>
-          <li>
-            <img src={ukImg} alt="" aria-hidden="true" />
-            <address>
-              <span className="block font-bold">United Kingdom</span>
-              <span className="block">68 Asfordby Rd</span>
-              <span className="block">Alcaston</span>
-              <span className="block">SY6 1YA</span>
-              <span className="block">+44 1241 918425</span>
+      <div className="my-28 w-full md:my-36 lg:my-40 lg:max-w-[70rem]">
+        <h2 className="text-custom-dark-grey mobile:text-center">
+          Our headquarters
+        </h2>
+        <ul className="mt-16 grid gap-20 md:flex md:justify-between md:gap-8 lg:justify-start">
+          <li className="flex-1">
+            <img
+              className="mobile:mx-auto"
+              src={ukImg}
+              alt=""
+              aria-hidden="true"
+            />
+            <address className="grid text-sm not-italic mobile:text-center">
+              <h3 className="mb-6 mt-11 mobile:text-[1.75rem]/[2.25rem] lg:text-xl">
+                United Kingdom
+              </h3>
+
+              <span>
+                <span className="sr-only">street: </span>
+                68 Asfordby Rd
+              </span>
+              <span>
+                <span className="sr-only">city: </span>
+                Alcaston
+              </span>
+              <span>
+                <span className="sr-only">state: </span>
+                SY6 1YA
+              </span>
+              <span>
+                <span className="sr-only">phone: </span>
+                +44 1241 918425
+              </span>
             </address>
           </li>
 
-          <li>
-            <img src={canadaImg} alt="" aria-hidden="true" />
-            <address>
-              <span className="block font-bold">Canada</span>
-              <span className="block">1528 Eglinton Avenue</span>
-              <span className="block">Toronto</span>
-              <span className="block">Ontario M4P 1A6</span>
-              <span className="block">+1 416 485 2997</span>
+          <li className="flex-1">
+            <img
+              className="mobile:mx-auto"
+              src={canadaImg}
+              alt=""
+              aria-hidden="true"
+            />
+            <address className="grid text-sm not-italic mobile:text-center">
+              <h3 className="mb-6 mt-11 mobile:text-[1.75rem]/[2.25rem] lg:text-xl">
+                Canada
+              </h3>
+              <span>
+                <span className="sr-only">street: </span>
+                1528 Eglinton Avenue
+              </span>
+              <span>
+                <span className="sr-only">city: </span>
+                Toronto
+              </span>
+              <span>
+                <span className="sr-only">state: </span>
+                Ontario M4P 1A6
+              </span>
+              <span>
+                <span className="sr-only">phone: </span>
+                +1 416 485 2997
+              </span>
             </address>
           </li>
 
-          <li>
-            <img src={australiaImg} alt="" aria-hidden="true" />
-            <address>
-              <span className="block font-bold">Australia</span>
-              <span className="block">36 Swanston Street</span>
-              <span className="block">Kewell</span>
-              <span className="block">Victoria</span>
-              <span className="block">+61 4 9928 3629</span>
+          <li className="flex-1">
+            <img
+              className="mobile:mx-auto"
+              src={australiaImg}
+              alt=""
+              aria-hidden="true"
+            />
+            <address className="grid text-sm not-italic mobile:text-center">
+              <h3 className="mb-6 mt-11 mobile:text-[1.75rem]/[2.25rem] lg:text-xl">
+                Australia
+              </h3>
+              <span>
+                <span className="sr-only">street: </span>
+                36 Swanston Street
+              </span>
+              <span>
+                <span className="sr-only">city: </span>
+                Kewell
+              </span>
+              <span>
+                <span className="sr-only">state: </span>
+                Victoria
+              </span>
+              <span>
+                <span className="sr-only">phone: </span>
+                +61 4 9928 3629
+              </span>
             </address>
           </li>
         </ul>
