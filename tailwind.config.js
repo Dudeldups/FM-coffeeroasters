@@ -22,7 +22,7 @@ export default {
     extend: {
       colors: {
         custom: {
-          "dark-cyan": "#0E8784",
+          "dark-cyan": "#0C807E",
           "dark-blue": "#333D4B",
           "pale-orange": "#FDD6BA",
           "light-cream": "#FEFCF7",
