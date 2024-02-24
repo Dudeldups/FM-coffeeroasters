@@ -13,20 +13,22 @@ import australiaImg from "../assets/about/desktop/illustration-australia.svg";
 
 const AboutUs = () => {
   return (
-    <section className="max-w-7xl">
-      <div>
+    <section className="flex-col-center max-w-7xl">
+      <div className="relative max-w-[25rem] overflow-hidden rounded-lg md:max-w-[45rem] lg:max-w-full">
         <picture>
           <source srcSet={heroImgAboutDesktop} media="(min-width: 60em)" />
           <source srcSet={heroImgAboutTablet} media="(min-width: 42.5em)" />
           <img
             src={heroImgAboutMobile}
-            alt="A neatly decorated coffe viewed from above"
+            alt="A neatly decorated cup of coffe viewed from above"
           />
         </picture>
 
-        <article>
-          <h1>About us</h1>
-          <p>
+        <article className="flex-col-center absolute inset-0 mx-auto px-5 text-custom-light-cream after:absolute after:inset-0 after:bg-black after:bg-opacity-30 mobile:text-center md:ml-0 md:items-start md:px-[3.75rem] xl:px-[5rem]">
+          <h1 className="z-10 text-[1.75rem] leading-none md:text-xl lg:text-2xl">
+            About Us
+          </h1>
+          <p className="z-10 mt-6 max-w-80 md:max-w-[25rem]">
             Coffeeroasters began its journey of exotic discovery in 1999,
             highlighting stories of coffee from around the world. We have since
             been dedicated to bring the perfect cup - from bean to brew - in
@@ -35,32 +37,35 @@ const AboutUs = () => {
         </article>
       </div>
 
-      <div>
+      <div className="flex-col-center mt-28 gap-12 text-center mobile:max-w-[25rem] md:mt-36 md:grid md:max-w-[45rem] md:grid-flow-col md:grid-cols-[40%_50%] md:justify-between md:gap-0 md:text-left lg:mt-40 lg:max-w-[70rem] lg:gap-20">
         <picture>
           <source srcSet={commitmentImgDesktop} media="(min-width: 60em)" />
           <source srcSet={commitmentImgTablet} media="(min-width: 42.5em)" />
           <img
+            className="rounded-lg md:mr-[1.5rem]"
             src={commitmentImgMobile}
-            alt="A barrista decorates the top of a latte with a pattern."
+            alt="A barrista decorating the top of a coffee with a pattern."
           />
         </picture>
-        <h2>Our commitment</h2>
-        <p>
-          We’re built on a simple mission and a commitment to doing good along
-          the way. We want to make it easy for you to discover and brew the
-          world’s best coffee at home. It all starts at the source. To locate
-          the specific lots we want to purchase, we travel nearly 60 days a year
-          trying to understand the challenges and opportunities in each of these
-          places. We collaborate with exceptional coffee growers and empower a
-          global community of farmers through with well above fair-trade
-          benchmarks. We also offer training, support farm community
-          initiatives, and invest in coffee plant science. Curating only the
-          finest blends, we roast each lot to highlight tasting profiles
-          distinctive to their native growing region.
-        </p>
+        <div>
+          <h2 className="text-lg xs:text-xl lg:text-2xl">Our commitment</h2>
+          <p className="mt-8">
+            We’re built on a simple mission and a commitment to doing good along
+            the way. We want to make it easy for you to discover and brew the
+            world’s best coffee at home. It all starts at the source. To locate
+            the specific lots we want to purchase, we travel nearly 60 days a
+            year trying to understand the challenges and opportunities in each
+            of these places. We collaborate with exceptional coffee growers and
+            empower a global community of farmers through with well above
+            fair-trade benchmarks. We also offer training, support farm
+            community initiatives, and invest in coffee plant science. Curating
+            only the finest blends, we roast each lot to highlight tasting
+            profiles distinctive to their native growing region.
+          </p>
+        </div>
       </div>
 
-      <div>
+      <div className="max-w-[70rem]">
         <picture>
           <source srcSet={qualityImgDesktop} media="(min-width: 64rem)" />
           <source srcSet={qualityImgTablet} media="(min-width: 48rem)" />

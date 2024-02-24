@@ -26,7 +26,7 @@ const Home = () => {
             alt="An antique coffee press, a glass and coffee beans lying around it."
           />
         </picture>
-        <article className="flex-col-center absolute inset-0 mx-auto h-full w-full  px-5 text-custom-light-cream mobile:text-center md:ml-0 md:items-start md:px-[3.75rem] xl:px-[5rem]">
+        <article className="flex-col-center absolute inset-0 mx-auto px-5 text-custom-light-cream mobile:text-center md:ml-0 md:items-start md:px-[3.75rem] xl:px-[5rem]">
           <h1 className="max-w-[11ch] text-xl leading-none xs:text-2xl md:text-[3rem] lg:text-3xl">
             Great coffee made simple.
           </h1>
