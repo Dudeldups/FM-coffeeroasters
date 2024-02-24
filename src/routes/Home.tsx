@@ -46,7 +46,7 @@ const Home = () => {
           our collection
         </h2>
 
-        <ul className="flex-col-center gap-12 pt-24 md:pt-16 lg:pt-24 xl:flex-row xl:items-start xl:gap-16 xl:pt-28">
+        <ul className="flex-col-center mx-auto gap-12 pt-24 md:pt-16 lg:pt-24 xl:max-w-[70rem] xl:flex-row xl:items-start xl:pt-28">
           <li className="flex-col-center gap-5 md:flex-row md:gap-9 xl:flex-col">
             <img
               className="max-w-[12rem] md:max-w-[14rem]"
@@ -124,7 +124,7 @@ const Home = () => {
           </p>
         </div>
 
-        <ul className="col-[1_/_span_1] row-[2_/_span_2] mx-auto grid justify-center gap-6 px-4 xs:px-6 sm:px-8 lg:grid-flow-col lg:px-4 xl:max-w-[68rem] xl:gap-8">
+        <ul className="col-[1_/_span_1] row-[2_/_span_2] mx-auto grid justify-center gap-6 px-4 xs:px-6 sm:px-8 lg:grid-flow-col lg:px-4 xl:max-w-[72rem] xl:gap-8">
           <li className="flex-col-center max-w-[20rem] gap-14 rounded-lg bg-custom-dark-cyan px-4 pb-12 pt-16 sm:px-10 md:max-w-[38rem] md:flex-row md:px-14 md:py-10 lg:flex-col lg:px-5 lg:pb-12 lg:pt-16 xl:px-12">
             <img src={beanImg} alt="" aria-hidden="true" />
             <div className="text-center md:text-left lg:text-center">
@@ -160,31 +160,37 @@ const Home = () => {
         </ul>
       </div>
 
-      <div>
-        <h2>How it works</h2>
+      <div className="flex-col-center mx-auto mt-28 max-w-[70rem] pb-28 lg:mt-48 lg:pb-48">
+        <h2 className="text-custom-dark-grey md:self-start">How it works</h2>
 
-        <ol>
-          <li>
-            <h3>Pick your coffee</h3>
-            <p>
+        <ol className="flex-col-center gap-14 pt-20 text-center md:flex-row md:items-start md:gap-8 md:pt-28 md:text-left lg:gap-24 lg:pt-36">
+          <li className="relative max-w-96 before:font-fraunces before:text-[4.5rem]/[1] before:font-black before:text-custom-pale-orange before:content-['0'_counter(list-item)] lg:pt-8">
+            <h3 className="mt-6 h-14 md:h-24 md:before:absolute md:before:inset-[-3.5rem_auto_auto_0] md:before:w-[calc(100%+2rem)] md:before:border-[1px] md:before:border-custom-pale-orange md:after:absolute md:after:inset-[-3.5rem_auto_auto_0] md:after:aspect-square md:after:w-8 md:after:-translate-y-1/2 md:after:rounded-full md:after:border-2 md:after:border-custom-dark-cyan md:after:bg-custom-light-cream lg:before:w-[calc(100%+6rem)]">
+              Pick your coffee
+            </h3>
+            <p className="">
               Select from our evolving range of artisan coffees. Our beans are
               ethically sourced and we pay fair prices for them. There are new
               coffees in all profiles every month for you to try out.
             </p>
           </li>
 
-          <li>
-            <h3>Choose the frequency</h3>
-            <p>
+          <li className="relative max-w-96 before:font-fraunces before:text-[4.5rem]/[1] before:font-black before:text-custom-pale-orange before:content-['0'_counter(list-item)] lg:pt-8">
+            <h3 className="mt-6 h-14 md:h-24 md:before:absolute md:before:inset-[-3.5rem_auto_auto_0] md:before:w-[calc(100%+2rem)] md:before:border-[1px] md:before:border-custom-pale-orange md:after:absolute md:after:inset-[-3.5rem_auto_auto_0] md:after:aspect-square md:after:w-8 md:after:-translate-y-1/2 md:after:rounded-full md:after:border-2 md:after:border-custom-dark-cyan md:after:bg-custom-light-cream lg:before:w-[calc(100%+6rem)]">
+              Choose the frequency
+            </h3>
+            <p className="">
               Customize your order frequency, quantity, even your roast style
               and grind type. Pause, skip or cancel your subscription with no
               commitment through our online portal.
             </p>
           </li>
 
-          <li>
-            <h3>Receive and enjoy!</h3>
-            <p>
+          <li className="relative max-w-96 before:font-fraunces before:text-[4.5rem]/[1] before:font-black before:text-custom-pale-orange before:content-['0'_counter(list-item)] lg:pt-8">
+            <h3 className="mt-6 h-14 md:h-24 md:after:absolute md:after:inset-[-3.5rem_auto_auto_0] md:after:aspect-square md:after:w-8 md:after:-translate-y-1/2 md:after:rounded-full md:after:border-2 md:after:border-custom-dark-cyan md:after:bg-custom-light-cream">
+              Receive and enjoy!
+            </h3>
+            <p className="">
               We ship your package within 48 hours, freshly roasted. Sit back
               and enjoy award-winning world-class coffees curated to provide a
               distinct tasting experience.
@@ -192,7 +198,7 @@ const Home = () => {
           </li>
         </ol>
 
-        <Link to="/subscribe">
+        <Link className="mt-20 block md:self-start lg:mt-16" to="/subscribe">
           <Btn>Create your plan</Btn>
         </Link>
       </div>
