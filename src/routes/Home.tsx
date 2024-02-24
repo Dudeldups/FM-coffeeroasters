@@ -26,16 +26,16 @@ const Home = () => {
             alt="An antique coffee press, a glass and coffee beans lying around it."
           />
         </picture>
-        <article className="flex-col-center absolute inset-0 mx-auto px-5 text-custom-light-cream mobile:text-center md:ml-0 md:items-start md:px-[3.75rem] xl:px-[5rem]">
-          <h1 className="max-w-[11ch] text-xl leading-none xs:text-2xl md:text-[3rem] lg:text-3xl">
+        <article className="flex-col-center absolute inset-0 mx-auto px-5 text-custom-light-cream after:absolute after:inset-0 after:bg-black after:bg-opacity-10 mobile:text-center md:ml-0 md:items-start md:px-[3.75rem] xl:px-[5rem]">
+          <h1 className="z-10 max-w-[11ch] text-xl leading-none xs:text-2xl md:text-[3rem] lg:text-3xl">
             Great coffee made simple.
           </h1>
-          <p className="mb-10 mt-6 max-w-80 opacity-80 md:max-w-[25rem] lg:mb-14 lg:mt-8">
+          <p className="z-10 mb-10 mt-6 max-w-80 opacity-80 md:max-w-[25rem] lg:mb-14 lg:mt-8">
             Start your mornings with the world’s best coffees. Try our expertly
             curated artisan coffees from our best roasters delivered directly to
             your door, at your schedule.
           </p>
-          <Link to="/subscribe">
+          <Link className="z-10" to="/subscribe">
             <Btn>Create your plan</Btn>
           </Link>
         </article>
