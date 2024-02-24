@@ -7,7 +7,7 @@ interface BtnProps {
 const Btn = ({ children, className }: BtnProps) => {
   return (
     <button
-      className={`rounded-lg bg-custom-dark-cyan px-8 py-4 font-fraunces text-lg font-black leading-6 text-custom-light-cream ${className ? className : ""}`}
+      className={`text-md rounded-lg bg-custom-dark-cyan px-8 py-4 font-fraunces font-black leading-6 text-custom-light-cream ${className ? className : ""}`}
     >
       {children}
     </button>

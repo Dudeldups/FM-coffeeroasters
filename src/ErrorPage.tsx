@@ -8,7 +8,7 @@ const ErrorPage = () => {
       id="error-page"
       className="flex flex-col items-center justify-center gap-8 p-8"
     >
-      <h1 className="text-4xl font-bold">Oops!</h1>
+      <h1 className="text-3xl font-bold">Oops!</h1>
       <p>Sorry, an unexpected error has occurred.</p>
       <p className="text-slate-400">
         <i>

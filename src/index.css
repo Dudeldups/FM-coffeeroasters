@@ -25,14 +25,14 @@
 
 @layer base {
   body {
-    @apply bg-custom-light-cream font-barlow text-base font-normal leading-[1.625rem];
+    @apply bg-custom-light-cream font-barlow text-xs font-normal lg:text-sm;
   }
 
   h1,
   h2,
   h3,
   h4 {
-    @apply font-fraunces text-2xl font-black;
+    @apply font-fraunces text-lg font-black;
   }
 }
 

@@ -27,10 +27,10 @@ const Home = () => {
           />
         </picture>
         <article className="flex-col-center absolute inset-0 mx-auto h-full w-full  px-5 text-custom-light-cream mobile:text-center md:ml-0 md:items-start md:px-[3.75rem] xl:px-[5rem]">
-          <h1 className="max-w-[11ch] text-[2rem] leading-none xs:text-[2.5rem] md:text-[3rem] lg:text-[4.5rem]">
+          <h1 className="max-w-[11ch] text-xl leading-none xs:text-2xl md:text-[3rem] lg:text-3xl">
             Great coffee made simple.
           </h1>
-          <p className="mb-10 mt-6 max-w-80 text-[.9375rem] leading-6 opacity-80 md:max-w-[25rem] lg:mb-14 lg:mt-8">
+          <p className="mb-10 mt-6 max-w-80 opacity-80 md:max-w-[25rem] lg:mb-14 lg:mt-8">
             Start your mornings with the world’s best coffees. Try our expertly
             curated artisan coffees from our best roasters delivered directly to
             your door, at your schedule.
@@ -55,8 +55,8 @@ const Home = () => {
               aria-hidden="true"
             />
             <div className="max-w-[18rem] text-center md:text-left xl:text-center">
-              <h3 className="text-2xl">Gran Espresso</h3>
-              <p className="mt-4 text-[.9375rem] leading-[1.5625rem] md:mt-6 md:text-[1rem] md:leading-[1.625rem]">
+              <h3>Gran Espresso</h3>
+              <p className="mt-4 md:mt-6">
                 Light and flavorful blend with cocoa and black pepper for an
                 intense experience
               </p>
@@ -71,8 +71,8 @@ const Home = () => {
               aria-hidden="true"
             />
             <div className="max-w-[18rem] text-center md:text-left xl:text-center">
-              <h3 className="text-2xl">Planalto</h3>
-              <p className="mt-4 text-[.9375rem] leading-[1.5625rem] md:mt-6 md:text-[1rem] md:leading-[1.625rem]">
+              <h3>Planalto</h3>
+              <p className="mt-4 md:mt-6">
                 Brazilian dark roast with rich and velvety body, and hints of
                 fruits and nuts
               </p>
@@ -87,8 +87,8 @@ const Home = () => {
               aria-hidden="true"
             />
             <div className="max-w-[18rem] text-center md:text-left xl:text-center">
-              <h3 className="text-2xl">Piccollo</h3>
-              <p className="mt-4 text-[.9375rem] leading-[1.5625rem] md:mt-6 md:text-[1rem] md:leading-[1.625rem]">
+              <h3>Piccollo</h3>
+              <p className="mt-4 md:mt-6">
                 Mild and smooth blend featuring notes of toasted almond and
                 dried cherry{" "}
               </p>
@@ -103,8 +103,8 @@ const Home = () => {
               aria-hidden="true"
             />
             <div className="max-w-[18rem] text-center md:text-left xl:text-center">
-              <h3 className="text-2xl">Danche</h3>
-              <p className="mt-4 text-[.9375rem] leading-[1.5625rem] md:mt-6 md:text-[1rem] md:leading-[1.625rem]">
+              <h3>Danche</h3>
+              <p className="mt-4 md:mt-6">
                 Ethiopian hand-harvested blend densely packed with vibrant fruit
                 notes
               </p>
@@ -115,8 +115,10 @@ const Home = () => {
 
       <div className="mt-28 grid text-custom-light-cream after:-z-10 after:col-[1_/_span_1] after:row-[1_/_span_2] after:rounded-lg after:bg-custom-dark-blue md:mt-36 xl:mt-48">
         <div className="col-[1_/_span_1] row-[1_/_span_1] mx-auto max-w-[35rem] px-4 py-16 text-center xs:px-6 sm:px-8">
-          <h2 className="text-[1.75rem] leading-none">Why choose us?</h2>
-          <p className="col-[1_/_span_1] row-[2_/_span_1] mt-6 text-[.9375rem] leading-[1.5625rem] opacity-80">
+          <h2 className="text-[1.75rem] leading-none md:text-2xl">
+            Why choose us?
+          </h2>
+          <p className="col-[1_/_span_1] row-[2_/_span_1] mt-6 opacity-80">
             A large part of our role is choosing which particular coffees will
             be featured in our range. This means working closely with the best
             coffee growers to give you a more impactful experience on every
@@ -164,33 +166,33 @@ const Home = () => {
         <h2 className="text-custom-dark-grey md:self-start">How it works</h2>
 
         <ol className="flex-col-center gap-14 pt-20 text-center md:flex-row md:items-start md:gap-8 md:pt-28 md:text-left lg:gap-24 lg:pt-36">
-          <li className="relative max-w-96 before:font-fraunces before:text-[4.5rem]/[1] before:font-black before:text-custom-pale-orange before:content-['0'_counter(list-item)] lg:pt-8">
-            <h3 className="mt-6 h-14 md:h-24 md:before:absolute md:before:inset-[-3.5rem_auto_auto_0] md:before:w-[calc(100%+2rem)] md:before:border-[1px] md:before:border-custom-pale-orange md:after:absolute md:after:inset-[-3.5rem_auto_auto_0] md:after:aspect-square md:after:w-8 md:after:-translate-y-1/2 md:after:rounded-full md:after:border-2 md:after:border-custom-dark-cyan md:after:bg-custom-light-cream lg:before:w-[calc(100%+6rem)]">
+          <li className="relative max-w-96 before:font-fraunces before:text-3xl before:font-black before:text-custom-pale-orange before:content-['0'_counter(list-item)] lg:pt-8">
+            <h3 className="mt-6 h-14 md:h-24 md:max-w-[11ch] md:before:absolute md:before:inset-[-3.5rem_auto_auto_0] md:before:w-[calc(100%+2rem)] md:before:border-[1px] md:before:border-custom-pale-orange md:after:absolute md:after:inset-[-3.5rem_auto_auto_0] md:after:aspect-square md:after:w-8 md:after:-translate-y-1/2 md:after:rounded-full md:after:border-2 md:after:border-custom-dark-cyan md:after:bg-custom-light-cream lg:before:w-[calc(100%+6rem)]">
               Pick your coffee
             </h3>
-            <p className="">
+            <p>
               Select from our evolving range of artisan coffees. Our beans are
               ethically sourced and we pay fair prices for them. There are new
               coffees in all profiles every month for you to try out.
             </p>
           </li>
 
-          <li className="relative max-w-96 before:font-fraunces before:text-[4.5rem]/[1] before:font-black before:text-custom-pale-orange before:content-['0'_counter(list-item)] lg:pt-8">
-            <h3 className="mt-6 h-14 md:h-24 md:before:absolute md:before:inset-[-3.5rem_auto_auto_0] md:before:w-[calc(100%+2rem)] md:before:border-[1px] md:before:border-custom-pale-orange md:after:absolute md:after:inset-[-3.5rem_auto_auto_0] md:after:aspect-square md:after:w-8 md:after:-translate-y-1/2 md:after:rounded-full md:after:border-2 md:after:border-custom-dark-cyan md:after:bg-custom-light-cream lg:before:w-[calc(100%+6rem)]">
+          <li className="relative max-w-96 before:font-fraunces before:text-3xl before:font-black before:text-custom-pale-orange before:content-['0'_counter(list-item)] lg:pt-8">
+            <h3 className="mt-6 h-14 md:h-24 md:max-w-[11ch] md:before:absolute md:before:inset-[-3.5rem_auto_auto_0] md:before:w-[calc(100%+2rem)] md:before:border-[1px] md:before:border-custom-pale-orange md:after:absolute md:after:inset-[-3.5rem_auto_auto_0] md:after:aspect-square md:after:w-8 md:after:-translate-y-1/2 md:after:rounded-full md:after:border-2 md:after:border-custom-dark-cyan md:after:bg-custom-light-cream lg:before:w-[calc(100%+6rem)]">
               Choose the frequency
             </h3>
-            <p className="">
+            <p>
               Customize your order frequency, quantity, even your roast style
               and grind type. Pause, skip or cancel your subscription with no
               commitment through our online portal.
             </p>
           </li>
 
-          <li className="relative max-w-96 before:font-fraunces before:text-[4.5rem]/[1] before:font-black before:text-custom-pale-orange before:content-['0'_counter(list-item)] lg:pt-8">
-            <h3 className="mt-6 h-14 md:h-24 md:after:absolute md:after:inset-[-3.5rem_auto_auto_0] md:after:aspect-square md:after:w-8 md:after:-translate-y-1/2 md:after:rounded-full md:after:border-2 md:after:border-custom-dark-cyan md:after:bg-custom-light-cream">
+          <li className="relative max-w-96 before:font-fraunces before:text-3xl before:font-black before:text-custom-pale-orange before:content-['0'_counter(list-item)] lg:pt-8">
+            <h3 className="mt-6 h-14 md:h-24 md:max-w-[11ch] md:after:absolute md:after:inset-[-3.5rem_auto_auto_0] md:after:aspect-square md:after:w-8 md:after:-translate-y-1/2 md:after:rounded-full md:after:border-2 md:after:border-custom-dark-cyan md:after:bg-custom-light-cream">
               Receive and enjoy!
             </h3>
-            <p className="">
+            <p>
               We ship your package within 48 hours, freshly roasted. Sit back
               and enjoy award-winning world-class coffees curated to provide a
               distinct tasting experience.
