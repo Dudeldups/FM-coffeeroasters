@@ -29,6 +29,7 @@ export default {
           "dark-grey": "#6B6E77",
           grey: "#83888F",
           "light-grey": "#B7C0CE",
+          "very-light-grey": "#f4f1eb",
         },
       },
       fontFamily: {
