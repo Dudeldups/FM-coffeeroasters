@@ -167,7 +167,7 @@ const Home = () => {
 
         <ol className="flex-col-center gap-14 pt-20 text-center md:flex-row md:items-start md:gap-8 md:pt-28 md:text-left lg:gap-24 lg:pt-36">
           <li className="relative max-w-96 before:font-fraunces before:text-3xl before:font-black before:text-custom-pale-orange before:content-['0'_counter(list-item)] lg:pt-8">
-            <h3 className="mt-6 h-14 md:h-24 md:max-w-[11ch] md:before:absolute md:before:inset-[-3.5rem_auto_auto_0] md:before:w-[calc(100%+2rem)] md:before:border-[1px] md:before:border-custom-pale-orange md:after:absolute md:after:inset-[-3.5rem_auto_auto_0] md:after:aspect-square md:after:w-8 md:after:-translate-y-1/2 md:after:rounded-full md:after:border-2 md:after:border-custom-dark-cyan md:after:bg-custom-light-cream lg:before:w-[calc(100%+6rem)]">
+            <h3 className="mt-6 h-14 md:h-24 md:max-w-[11ch] md:before:absolute md:before:inset-[-3.5rem_auto_auto_0] md:before:w-[calc(100%+2rem)] md:before:border md:before:border-custom-pale-orange md:after:absolute md:after:inset-[-3.5rem_auto_auto_0] md:after:aspect-square md:after:w-8 md:after:-translate-y-1/2 md:after:rounded-full md:after:border-2 md:after:border-custom-dark-cyan md:after:bg-custom-light-cream lg:before:w-[calc(100%+6rem)]">
               Pick your coffee
             </h3>
             <p>
@@ -178,7 +178,7 @@ const Home = () => {
           </li>
 
           <li className="relative max-w-96 before:font-fraunces before:text-3xl before:font-black before:text-custom-pale-orange before:content-['0'_counter(list-item)] lg:pt-8">
-            <h3 className="mt-6 h-14 md:h-24 md:max-w-[11ch] md:before:absolute md:before:inset-[-3.5rem_auto_auto_0] md:before:w-[calc(100%+2rem)] md:before:border-[1px] md:before:border-custom-pale-orange md:after:absolute md:after:inset-[-3.5rem_auto_auto_0] md:after:aspect-square md:after:w-8 md:after:-translate-y-1/2 md:after:rounded-full md:after:border-2 md:after:border-custom-dark-cyan md:after:bg-custom-light-cream lg:before:w-[calc(100%+6rem)]">
+            <h3 className="mt-6 h-14 md:h-24 md:max-w-[11ch] md:before:absolute md:before:inset-[-3.5rem_auto_auto_0] md:before:w-[calc(100%+2rem)] md:before:border md:before:border-custom-pale-orange md:after:absolute md:after:inset-[-3.5rem_auto_auto_0] md:after:aspect-square md:after:w-8 md:after:-translate-y-1/2 md:after:rounded-full md:after:border-2 md:after:border-custom-dark-cyan md:after:bg-custom-light-cream lg:before:w-[calc(100%+6rem)]">
               Choose the frequency
             </h3>
             <p>

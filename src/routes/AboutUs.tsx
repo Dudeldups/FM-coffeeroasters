@@ -69,7 +69,11 @@ const AboutUs = () => {
         <picture className="col-[1_/_span_1] row-[1_/_span_2] px-6 sm:px-14 lg:col-[2_/_span_1] lg:row-[1_/_span_2] lg:px-0">
           <source srcSet={qualityImgDesktop} media="(min-width: 60em)" />
           <source srcSet={qualityImgTablet} media="(min-width: 48em)" />
-          <img className="mx-auto rounded-lg" src={qualityImgMobile} alt="" />
+          <img
+            className="mx-auto rounded-lg"
+            src={qualityImgMobile}
+            alt="A coffee cup with a decorated cream flower on a wooden table."
+          />
         </picture>
         <div className="col-[1_/_span_1] row-[3_/_span_1] mx-auto px-6 text-center sm:px-14 lg:col-[1_/_span_1] lg:row-[2_/_span_1] lg:px-0 lg:text-left">
           <h2 className="mt-16 text-lg leading-none xs:text-[1.75rem] md:text-xl xl:mt-24 xl:text-2xl">
