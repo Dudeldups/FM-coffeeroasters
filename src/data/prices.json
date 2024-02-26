@@ -1,17 +1,17 @@
 {
   "250g": {
-    "everyWeek": 7.2,
-    "everyTwoWeeks": 9.6,
-    "everyMonth": 12.0
+    "Every-week": 7.2,
+    "Every-2-weeks": 9.6,
+    "Every-month": 12.0
   },
   "500g": {
-    "everyWeek": 13.0,
-    "everyTwoWeeks": 17.5,
-    "everyMonth": 22.0
+    "Every-week": 13.0,
+    "Every-2-weeks": 17.5,
+    "Every-month": 22.0
   },
   "1000g": {
-    "everyWeek": 22.0,
-    "everyTwoWeeks": 32.0,
-    "everyMonth": 42.0
+    "Every-week": 22.0,
+    "Every-2-weeks": 32.0,
+    "Every-month": 42.0
   }
 }

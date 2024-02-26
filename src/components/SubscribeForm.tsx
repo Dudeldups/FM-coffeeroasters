@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
 import subscriptionData from "../data/subscriptions.json";
+import priceData from "../data/prices.json";
 import Btn from "./Btn";
 
 interface SubscribeFormProps {
@@ -40,23 +41,7 @@ const SubscribeForm = ({
     console.log(data);
   };
 
-  const prices: Prices = {
-    "250g": {
-      "Every-week": 7.2,
-      "Every-2-weeks": 9.6,
-      "Every-month": 12.0,
-    },
-    "500g": {
-      "Every-week": 13.0,
-      "Every-2-weeks": 17.5,
-      "Every-month": 22.0,
-    },
-    "1000g": {
-      "Every-week": 22.0,
-      "Every-2-weeks": 32.0,
-      "Every-month": 42.0,
-    },
-  };
+  const prices: Prices = priceData;
 
   const formData = watch();
 
@@ -101,16 +86,6 @@ const SubscribeForm = ({
       onSubmit={handleSubmit(onSubmit)}
       className="mt-28 md:mt-36 md:max-w-[45rem] lg:mt-40"
     >
-      {currentFormStep}
-      {`${formData["Preferences"]}`}
-      <br />
-      {`${formData["Bean-Type"]}`}
-      <br />
-      {`${formData["Quantity"]}`}
-      <br />
-      {`${formData["Grind-Option"]}`}
-      <br />
-      {`${formData["Deliveries"]}`}
       <ul className="grid gap-24 lg:gap-20">
         {subscriptionData.map((question) => {
           const questionSplit = question.name.split(" ").join("-");
@@ -127,7 +102,7 @@ const SubscribeForm = ({
                     {question.question}
                   </h2>
 
-                  <button type="button" className="mt-3 inline w-6">
+                  <button type="button" className=" mt-3 inline w-6">
                     <span className="sr-only">Expand</span>
                     <span className="mx-auto block h-3 w-3 -rotate-45 border-r-[3px] border-t-[3px] border-custom-dark-cyan"></span>
                   </button>
@@ -144,8 +119,6 @@ const SubscribeForm = ({
                               prices[formData["Quantity"]][optionSplit]
                             : "")
                         : "";
-
-                    console.log(optionSplit);
 
                     return (
                       <div
@@ -186,7 +159,6 @@ const SubscribeForm = ({
                           htmlFor={`${questionSplit}-${optionSplit}`}
                           onClick={() => {
                             if (currentFormStep < question.id) {
-                              console.log("true");
                               setError(questionSplit, {
                                 message:
                                   "Please answer the previous question first.",
