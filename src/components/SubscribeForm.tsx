@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
 import subscriptionData from "../data/subscriptions.json";
@@ -11,9 +11,9 @@ interface SubscribeFormProps {
 }
 interface Prices {
   [key: string]: {
-    Everyweek: number;
-    Every2weeks: number;
-    Everymonth: number;
+    "Every-week": number;
+    "Every-2-weeks": number;
+    "Every-month": number;
   };
 }
 
@@ -22,6 +22,8 @@ const SubscribeForm = ({
   setSummaryString,
   setIsModalOpen,
 }: SubscribeFormProps) => {
+  const [currentFormStep, setCurrentFormStep] = useState(1);
+
   const {
     register,
     handleSubmit,
@@ -40,33 +42,44 @@ const SubscribeForm = ({
 
   const prices: Prices = {
     "250g": {
-      Everyweek: 7.2,
-      Every2weeks: 9.6,
-      Everymonth: 12.0,
+      "Every-week": 7.2,
+      "Every-2-weeks": 9.6,
+      "Every-month": 12.0,
     },
     "500g": {
-      Everyweek: 13.0,
-      Every2weeks: 17.5,
-      Everymonth: 22.0,
+      "Every-week": 13.0,
+      "Every-2-weeks": 17.5,
+      "Every-month": 22.0,
     },
     "1000g": {
-      Everyweek: 22.0,
-      Every2weeks: 32.0,
-      Everymonth: 42.0,
+      "Every-week": 22.0,
+      "Every-2-weeks": 32.0,
+      "Every-month": 42.0,
     },
   };
 
-  console.log(errors);
-
   const formData = watch();
 
-  const currentFormStep =
-    Object.values(formData).filter(
-      (value) => value !== null && value !== undefined,
-    ).length + 1;
   const isCapsuleSelected = formData["Preferences"] === "Capsule";
+  const isGrindOptionSelected = typeof formData["Grind-Option"] === "string";
 
   useEffect(() => {
+    if (isCapsuleSelected && currentFormStep === 4) {
+      setCurrentFormStep(5);
+    } else if (
+      !isCapsuleSelected &&
+      currentFormStep >= 5 &&
+      !isGrindOptionSelected
+    ) {
+      setCurrentFormStep(4);
+    } else if (
+      isCapsuleSelected &&
+      currentFormStep > 4 &&
+      isGrindOptionSelected
+    ) {
+      setValue("Grind-Option", undefined);
+    }
+
     setSummaryString(
       `"I drink my coffee ${
         isCapsuleSelected
@@ -90,11 +103,18 @@ const SubscribeForm = ({
     >
       {currentFormStep}
       {`${formData["Preferences"]}`}
+      <br />
       {`${formData["Bean-Type"]}`}
+      <br />
+      {`${formData["Quantity"]}`}
+      <br />
+      {`${formData["Grind-Option"]}`}
+      <br />
+      {`${formData["Deliveries"]}`}
       <ul className="grid gap-24 lg:gap-20">
         {subscriptionData.map((question) => {
-          const isQuestionFive = question.id === 5;
           const questionSplit = question.name.split(" ").join("-");
+
           return (
             <li key={question.id + question.question}>
               <fieldset
@@ -116,18 +136,34 @@ const SubscribeForm = ({
                 <div className="mt-8 grid gap-4 md:mt-10 md:grid-cols-3 md:gap-2 lg:mt-14 lg:gap-6">
                   {question.options.map((option) => {
                     const optionSplit = option.name.split(" ").join("-");
+                    const priceString =
+                      currentFormStep > 3
+                        ? "$" +
+                          (prices[formData["Quantity"]]
+                            ? // @ts-expect-error // TS doesn't like dynamic key
+                              prices[formData["Quantity"]][optionSplit]
+                            : "")
+                        : "";
+
+                    console.log(optionSplit);
+
                     return (
                       <div
                         key={question.id + option.name}
-                        className={`cursor-pointer rounded-lg p-6 outline-2 outline-offset-2 outline-custom-dark-grey focus-within:bg-custom-pale-orange focus-within:outline ${formData[questionSplit] === option.name ? "bg-custom-dark-cyan text-custom-light-cream" : "bg-custom-very-light-grey text-custom-dark-blue hover:bg-custom-pale-orange"}`}
+                        className={`cursor-pointer rounded-lg p-6 outline-2 outline-offset-2 outline-custom-dark-grey focus-within:outline ${formData[questionSplit] === option.name ? "bg-custom-dark-cyan text-custom-light-cream" : "bg-custom-very-light-grey text-custom-dark-blue focus-within:bg-custom-pale-orange hover:bg-custom-pale-orange"}`}
                         onClick={() => {
                           if (currentFormStep < question.id) {
-                            console.log("true");
                             setError(questionSplit, {
                               message:
                                 "Please answer the previous question first.",
                             });
-                          } else setValue(questionSplit, option.name);
+                          } else {
+                            clearErrors();
+                            setValue(questionSplit, option.name);
+                            if (question.id >= currentFormStep) {
+                              setCurrentFormStep(question.id + 1);
+                            }
+                          }
                         }}
                       >
                         <input
@@ -135,8 +171,10 @@ const SubscribeForm = ({
                           {...register(questionSplit, {
                             required:
                               currentFormStep !== 4 || !isCapsuleSelected,
-                            onChange: () => clearErrors(),
-                            disabled: currentFormStep < question.id,
+                            disabled:
+                              question.id === 4 && isCapsuleSelected
+                                ? true
+                                : currentFormStep < question.id,
                           })}
                           type="radio"
                           id={`${questionSplit}-${optionSplit}`}
@@ -165,9 +203,8 @@ const SubscribeForm = ({
                           className=""
                           id={`${questionSplit}-${optionSplit}-d`}
                         >
-                          {isQuestionFive
-                            ? // @ts-expect-error - TS doesn't like the optional chaining here
-                              `${currentFormStep === 5 ? `$${prices[formData["Quantity"]]?.[optionSplit]} per shipment. ` : ""}`
+                          {question.id === 5 && currentFormStep > 3
+                            ? priceString + " per shipment. "
                             : ""}
                           {option.description}
                         </p>
