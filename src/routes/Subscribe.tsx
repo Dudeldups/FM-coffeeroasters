@@ -11,11 +11,14 @@ const Subscribe = () => {
 
   return (
     <section className="flex-col-center max-w-7xl">
-      <div className="relative max-w-[25rem] overflow-hidden rounded-lg md:max-w-[45rem] lg:max-w-full">
+      <div className="flex-center relative max-h-[27rem] overflow-hidden rounded-lg lg:max-h-full">
         <picture>
           <source srcSet={heroImgSubscribeDesktop} media="(min-width: 60em)" />
           <source srcSet={heroImgSubscribeTablet} media="(min-width: 42.5em)" />
-          <img src={heroImgSubscribeMobile} alt="" />
+          <img
+            src={heroImgSubscribeMobile}
+            alt="A coffee cup with a decorated cream flower."
+          />
         </picture>
 
         <article className="flex-col-center absolute inset-0 mx-auto px-5 text-custom-light-cream after:absolute after:inset-0 after:bg-black after:bg-opacity-30 mobile:text-center md:ml-0 md:items-start md:px-[3.75rem] xl:px-20">
@@ -30,7 +33,7 @@ const Subscribe = () => {
         </article>
       </div>
 
-      <div className="mt-28 w-[calc(100%+15rem)] rounded-lg bg-custom-dark-blue py-20 md:mt-36 md:pt-24 lg:my-24 lg:mt-40 lg:w-auto lg:pt-28">
+      <div className="mt-28 w-[calc(100%+25rem)] rounded-lg bg-custom-dark-blue py-20 md:mt-36 md:pt-24 lg:mt-40 lg:w-auto lg:pt-28">
         <ol className="mx-auto flex max-w-[100vw] flex-col gap-14 px-4 text-custom-light-cream xs:px-6 md:flex-row md:gap-4 md:px-10 lg:gap-10 lg:px-14 xl:gap-20 xl:px-20">
           <li className="relative flex-1 mobile:text-center md:before:absolute md:before:inset-[-1rem_auto_auto_0] md:before:w-[calc(200%+2rem)] md:before:translate-x-4 md:before:border md:before:border-custom-pale-orange md:after:absolute md:after:inset-[-1rem_auto_auto_0] md:after:aspect-square md:after:w-8 md:after:-translate-y-1/2 md:after:rounded-full md:after:border-2 md:after:border-custom-dark-cyan md:after:bg-transparent lg:before:w-[calc(200%+5rem)] xl:before:w-[calc(200%+10rem)]">
             <h2 className="before:mb-6 before:block before:font-fraunces before:text-3xl before:font-black before:text-custom-pale-orange before:content-['0'_counter(list-item)] xs:text-[1.75rem] md:max-w-[11ch] md:before:mb-10 md:before:mt-14 lg:text-xl">

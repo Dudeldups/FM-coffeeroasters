@@ -14,7 +14,7 @@ import australiaImg from "../assets/about/desktop/illustration-australia.svg";
 const AboutUs = () => {
   return (
     <section className="flex-col-center max-w-7xl">
-      <div className="relative max-w-[25rem] overflow-hidden rounded-lg md:max-w-[45rem] lg:max-w-full">
+      <div className="flex-center relative max-h-[27rem] overflow-hidden rounded-lg lg:max-h-full">
         <picture>
           <source srcSet={heroImgAboutDesktop} media="(min-width: 60em)" />
           <source srcSet={heroImgAboutTablet} media="(min-width: 42.5em)" />

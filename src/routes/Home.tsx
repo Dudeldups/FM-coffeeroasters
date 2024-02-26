@@ -16,7 +16,7 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <section className="max-w-7xl">
-      <div className="relative mx-auto max-w-[25rem] overflow-hidden rounded-lg md:max-w-[45rem] lg:max-w-full">
+      <div className="relative flex max-h-[35rem] items-start justify-center overflow-hidden rounded-lg lg:max-h-full">
         <picture className="">
           <source srcSet={heroImgHomeDesktop} media="(min-width: 60em)" />
           <source srcSet={heroImgHomeTablet} media="(min-width: 42.5em)" />
@@ -26,7 +26,7 @@ const Home = () => {
             alt="An antique coffee press, a glass and coffee beans lying around it."
           />
         </picture>
-        <article className="flex-col-center absolute inset-0 mx-auto px-5 text-custom-light-cream after:absolute after:inset-0 after:bg-black after:bg-opacity-10 mobile:text-center md:ml-0 md:items-start md:px-[3.75rem] xl:px-[5rem]">
+        <article className="flex-col-center absolute inset-0 mx-auto px-5 text-custom-light-cream after:absolute after:inset-0 after:bg-black after:bg-opacity-10 mobile:text-center md:ml-0 md:items-start md:px-[3.75rem] xl:px-20">
           <h1 className="z-10 max-w-[11ch] text-xl leading-none xs:text-2xl md:text-[3rem] lg:text-3xl">
             Great coffee made simple.
           </h1>
