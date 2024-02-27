@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
 import subscriptionData from "../data/subscriptions.json";
@@ -23,8 +23,6 @@ const SubscribeForm = ({
   setSummaryString,
   setIsModalOpen,
 }: SubscribeFormProps) => {
-  const [currentFormStep, setCurrentFormStep] = useState(1);
-
   const {
     register,
     handleSubmit,
@@ -46,27 +44,35 @@ const SubscribeForm = ({
   const formData = watch();
 
   const isCapsuleSelected = formData["Preferences"] === "Capsule";
-  const isGrindOptionSelected = typeof formData["Grind-Option"] === "string";
+
+  let currentFormStep =
+    1 +
+    Object.values(formData).filter((value) => typeof value === "string").length;
+
+  if (
+    !isCapsuleSelected &&
+    currentFormStep >= 5 &&
+    typeof formData["Grind-Option"] !== "string"
+  ) {
+    console.log("one");
+    currentFormStep = 4;
+  } else if (currentFormStep === 4 && isCapsuleSelected) {
+    console.log("two");
+    currentFormStep = 5;
+  } else if (currentFormStep === 5 && isCapsuleSelected) {
+    console.log("three");
+    currentFormStep = 6;
+  } else if (
+    isCapsuleSelected &&
+    typeof formData["Grind-Option"] === "string"
+  ) {
+    console.log("reset");
+    setValue("Grind-Option", undefined);
+  }
 
   useEffect(() => {
-    if (isCapsuleSelected && currentFormStep === 4) {
-      setCurrentFormStep(5);
-    } else if (
-      !isCapsuleSelected &&
-      currentFormStep >= 5 &&
-      !isGrindOptionSelected
-    ) {
-      setCurrentFormStep(4);
-    } else if (
-      isCapsuleSelected &&
-      currentFormStep > 4 &&
-      isGrindOptionSelected
-    ) {
-      setValue("Grind-Option", undefined);
-    }
-
     setSummaryString(
-      `"I drink my coffee ${
+      `“I drink my coffee ${
         isCapsuleSelected
           ? "using Capsules"
           : `as ${formData["Preferences"] || "_____"}`
@@ -76,15 +82,17 @@ const SubscribeForm = ({
             ? ` ground ala ${formData["Grind-Option"]}`
             : " ground ala _____"
           : ""
-      }, sent to me ${formData["Deliveries"] || "_____"}.`,
+      }, sent to me ${formData["Deliveries"] || "_____"}.”`,
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formData]);
 
+  console.log(currentFormStep);
+
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="mt-28 md:mt-36 md:max-w-[45rem] lg:mt-40"
+      className="flex-col-center my-28 max-w-[25rem] md:my-36 md:max-w-[45rem] lg:my-40 xl:items-end"
     >
       <ul className="grid gap-24 lg:gap-20">
         {subscriptionData.map((question) => {
@@ -93,18 +101,20 @@ const SubscribeForm = ({
           return (
             <li key={question.id + question.question}>
               <fieldset
-                className=""
                 aria-expanded={currentFormStep === question.id}
                 aria-live="polite"
               >
-                <legend className="peer flex w-full items-start justify-between gap-4">
+                <legend className="peer relative w-full pr-7">
                   <h2 className="text-lg/[1.75rem] text-custom-dark-grey md:text-xl lg:text-2xl">
                     {question.question}
                   </h2>
 
-                  <button type="button" className=" mt-3 inline w-6">
+                  <button type="button" className="absolute inset-0 flex">
+                    {
+                      // TODO add logic for sr-only text
+                    }
                     <span className="sr-only">Expand</span>
-                    <span className="mx-auto block h-3 w-3 -rotate-45 border-r-[3px] border-t-[3px] border-custom-dark-cyan"></span>
+                    <span className="ml-auto mt-2 block h-3 w-3 -rotate-45 border-r-[3px] border-t-[3px] border-custom-dark-cyan md:mt-4"></span>
                   </button>
                 </legend>
 
@@ -123,7 +133,7 @@ const SubscribeForm = ({
                     return (
                       <div
                         key={question.id + option.name}
-                        className={`cursor-pointer rounded-lg p-6 outline-2 outline-offset-2 outline-custom-dark-grey focus-within:outline ${formData[questionSplit] === option.name ? "bg-custom-dark-cyan text-custom-light-cream" : "bg-custom-very-light-grey text-custom-dark-blue focus-within:bg-custom-pale-orange hover:bg-custom-pale-orange"}`}
+                        className={`cursor-pointer rounded-lg p-6 outline-2 outline-offset-2 outline-custom-dark-grey focus-within:outline md:pb-14 md:pt-8 ${formData[questionSplit] === option.name ? "bg-custom-dark-cyan text-custom-light-cream" : "bg-custom-very-light-grey text-custom-dark-blue focus-within:bg-custom-pale-orange hover:bg-custom-pale-orange"}`}
                         onClick={() => {
                           if (currentFormStep < question.id) {
                             setError(questionSplit, {
@@ -133,9 +143,6 @@ const SubscribeForm = ({
                           } else {
                             clearErrors();
                             setValue(questionSplit, option.name);
-                            if (question.id >= currentFormStep) {
-                              setCurrentFormStep(question.id + 1);
-                            }
                           }
                         }}
                       >
@@ -172,7 +179,7 @@ const SubscribeForm = ({
                         </label>
 
                         <p
-                          className=""
+                          className="mt-2 md:mt-5"
                           id={`${questionSplit}-${optionSplit}-d`}
                         >
                           {question.id === 5 && currentFormStep > 3
@@ -193,15 +200,14 @@ const SubscribeForm = ({
         })}
       </ul>
 
-      <div className="mt-4">
-        <h2>Order summary</h2>
-        <p>{summaryString}</p>
+      <div className="mt-20 rounded-lg bg-custom-dark-blue px-6 py-7 text-lg text-white md:px-11 md:py-8 lg:px-16">
+        <h2 className="font-barlow text-sm font-normal uppercase text-custom-light-grey">
+          Order summary
+        </h2>
+        <p className="mt-3 font-fraunces font-black">{summaryString}</p>
       </div>
 
-      <Btn
-        className="mt-4 p-2"
-        isDisabled={isSubmitting || currentFormStep < 6}
-      >
+      <Btn className="mt-14" isDisabled={isSubmitting || currentFormStep < 6}>
         {isSubmitting ? "Loading..." : "Create my plan!"}
       </Btn>
     </form>
