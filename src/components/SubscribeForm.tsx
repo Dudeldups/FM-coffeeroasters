@@ -111,7 +111,9 @@ const SubscribeForm = ({
                 aria-live="polite"
               >
                 <legend className="peer relative w-full pr-7">
-                  <h2 className="text-lg/[1.75rem] text-custom-dark-grey md:text-xl lg:text-2xl">
+                  <h2
+                    className={`text-lg/[1.75rem] text-custom-dark-grey md:text-xl lg:text-2xl ${question.id === 4 && isCapsuleSelected ? "opacity-50" : ""}`}
+                  >
                     {question.question}
                   </h2>
 
@@ -145,98 +147,85 @@ const SubscribeForm = ({
                   </button>
                 </legend>
 
-                <div className="mt-8 grid gap-4 md:mt-10 md:grid-cols-3 md:gap-2 lg:mt-14 lg:gap-6">
-                  {question.options.map((option) => {
-                    const optionSplit = option.name.split(" ").join("-");
-                    const priceString =
-                      currentFormStep > 3
-                        ? "$" +
-                          (prices[formData["Quantity"]]
-                            ? // @ts-expect-error // TS doesn't like dynamic key
-                              prices[formData["Quantity"]][optionSplit]
-                            : "")
-                        : "";
+                <div
+                  className={`grid transition-[grid-template-rows] duration-300 md:mt-10 lg:mt-14 lg:gap-6 ${isExpanded[question.id] ? "grid-rows-[1fr] ease-in" : "grid-rows-[0fr] ease-out"}`}
+                >
+                  <div className="grid gap-4 overflow-hidden md:grid-cols-3 md:gap-2">
+                    {question.options.map((option) => {
+                      const optionSplit = option.name.split(" ").join("-");
+                      const priceString =
+                        currentFormStep > 3
+                          ? "$" +
+                            (prices[formData["Quantity"]]
+                              ? // @ts-expect-error // TS doesn't like dynamic key
+                                prices[formData["Quantity"]][optionSplit]
+                              : "")
+                          : "";
 
-                    return (
-                      <div
-                        key={question.id + option.name}
-                        className={`cursor-pointer rounded-lg p-6 outline-2 outline-offset-2 outline-custom-dark-grey focus-within:outline md:pb-14 md:pt-8 ${formData[questionSplit] === option.name ? "bg-custom-dark-cyan text-custom-light-cream" : "bg-custom-very-light-grey text-custom-dark-blue focus-within:bg-custom-pale-orange hover:bg-custom-pale-orange"}`}
-                        onClick={() => {
-                          if (question.id === 4 && isCapsuleSelected) return;
-                          if (currentFormStep < question.id) {
-                            setError(questionSplit, {
-                              message:
-                                "Please answer the previous question first.",
-                            });
-                          } else {
-                            clearErrors();
-                            setValue(questionSplit, option.name);
-                            setIsExpanded((val) => {
-                              if (
-                                isCapsuleSelected ||
-                                option.name === "Capsule"
-                              ) {
-                                return {
-                                  ...val,
-                                  4: false,
-                                  [currentFormStep === 3
-                                    ? 5
-                                    : currentFormStep + 1]: true,
-                                };
-                              } else {
-                                return {
-                                  ...val,
-                                  [currentFormStep + 1]: true,
-                                };
-                              }
-                            });
-                          }
-                        }}
-                      >
-                        <input
-                          className="sr-only"
-                          {...register(questionSplit, {
-                            required:
-                              currentFormStep !== 4 || !isCapsuleSelected,
-                            disabled:
-                              question.id === 4 && isCapsuleSelected
-                                ? true
-                                : currentFormStep < question.id,
-                          })}
-                          type="radio"
-                          id={`${questionSplit}-${optionSplit}`}
-                          value={option.name}
-                          aria-describedby={`${questionSplit}-${optionSplit}-d`}
-                        />
-                        <label
-                          className={`cursor-pointer ${currentFormStep >= question.id ? "" : ""}`}
-                          htmlFor={`${questionSplit}-${optionSplit}`}
+                      return (
+                        <div
+                          key={question.id + option.name}
+                          className={`cursor-pointer rounded-lg p-6 outline-2 outline-offset-2 outline-custom-dark-grey focus-within:outline mobile:first:mt-6 md:pb-14 md:pt-8 ${formData[questionSplit] === option.name ? "bg-custom-dark-cyan text-custom-light-cream" : "bg-custom-very-light-grey text-custom-dark-blue focus-within:bg-custom-pale-orange hover:bg-custom-pale-orange"}`}
                           onClick={() => {
+                            if (question.id === 4 && isCapsuleSelected) return;
                             if (currentFormStep < question.id) {
                               setError(questionSplit, {
                                 message:
                                   "Please answer the previous question first.",
                               });
+                            } else {
+                              clearErrors();
+                              setValue(questionSplit, option.name);
                             }
                           }}
                         >
-                          <span className={`font-fraunces text-lg font-black`}>
-                            {option.name}
-                          </span>
-                        </label>
+                          <input
+                            className="sr-only"
+                            {...register(questionSplit, {
+                              required:
+                                currentFormStep !== 4 || !isCapsuleSelected,
+                              disabled:
+                                question.id === 4 && isCapsuleSelected
+                                  ? true
+                                  : currentFormStep < question.id,
+                            })}
+                            type="radio"
+                            id={`${questionSplit}-${optionSplit}`}
+                            value={option.name}
+                            aria-describedby={`${questionSplit}-${optionSplit}-d`}
+                          />
+                          <label
+                            className={`cursor-pointer ${currentFormStep >= question.id ? "" : ""}`}
+                            htmlFor={`${questionSplit}-${optionSplit}`}
+                            onClick={() => {
+                              if (currentFormStep < question.id) {
+                                setError(questionSplit, {
+                                  message:
+                                    "Please answer the previous question first.",
+                                });
+                              }
+                            }}
+                          >
+                            <span
+                              className={`font-fraunces text-lg font-black`}
+                            >
+                              {option.name}
+                            </span>
+                          </label>
 
-                        <p
-                          className="mt-2 md:mt-5"
-                          id={`${questionSplit}-${optionSplit}-d`}
-                        >
-                          {question.id === 5 && currentFormStep > 3
-                            ? priceString + " per shipment. "
-                            : ""}
-                          {option.description}
-                        </p>
-                      </div>
-                    );
-                  })}
+                          <p
+                            className="mt-2 md:mt-5"
+                            id={`${questionSplit}-${optionSplit}-d`}
+                          >
+                            {question.id === 5 && currentFormStep > 3
+                              ? priceString + " per shipment. "
+                              : ""}
+                            {option.description}
+                          </p>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
               </fieldset>
               {errors[questionSplit] && (
