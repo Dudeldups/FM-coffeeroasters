@@ -75,6 +75,23 @@ const SubscribeForm = ({
   }
 
   useEffect(() => {
+    setIsExpanded((val) => {
+      if (isCapsuleSelected) {
+        return {
+          ...val,
+          4: false,
+          [currentFormStep === 4 ? 5 : currentFormStep]: true,
+        };
+      } else {
+        return {
+          ...val,
+          [currentFormStep]: true,
+        };
+      }
+    });
+  }, [currentFormStep, isCapsuleSelected]);
+
+  useEffect(() => {
     setSummaryString(
       `“I drink my coffee ${
         isCapsuleSelected
