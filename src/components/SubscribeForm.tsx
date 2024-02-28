@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
 import subscriptionData from "../data/subscriptions.json";
@@ -23,6 +23,14 @@ const SubscribeForm = ({
   setSummaryString,
   setIsModalOpen,
 }: SubscribeFormProps) => {
+  const [isExpanded, setIsExpanded] = useState<Record<number, boolean>>({
+    1: true,
+    2: false,
+    3: false,
+    4: false,
+    5: false,
+  });
+
   const {
     register,
     handleSubmit,
@@ -54,19 +62,15 @@ const SubscribeForm = ({
     currentFormStep >= 5 &&
     typeof formData["Grind-Option"] !== "string"
   ) {
-    console.log("one");
     currentFormStep = 4;
   } else if (currentFormStep === 4 && isCapsuleSelected) {
-    console.log("two");
     currentFormStep = 5;
   } else if (currentFormStep === 5 && isCapsuleSelected) {
-    console.log("three");
     currentFormStep = 6;
   } else if (
     isCapsuleSelected &&
     typeof formData["Grind-Option"] === "string"
   ) {
-    console.log("reset");
     setValue("Grind-Option", undefined);
   }
 
@@ -84,10 +88,12 @@ const SubscribeForm = ({
           : ""
       }, sent to me ${formData["Deliveries"] || "_____"}.”`,
     );
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formData]);
 
   console.log(currentFormStep);
+  console.log(isExpanded);
 
   return (
     <form
@@ -109,12 +115,33 @@ const SubscribeForm = ({
                     {question.question}
                   </h2>
 
-                  <button type="button" className="absolute inset-0 flex">
+                  <button
+                    type="button"
+                    className="absolute inset-0 z-10 flex"
+                    onClick={() =>
+                      setIsExpanded((val) => {
+                        if (question.id === 4 && isCapsuleSelected) {
+                          setError(questionSplit, {
+                            message:
+                              "You don't need to change this option if you've selected Capsules.",
+                          });
+
+                          return val;
+                        }
+                        return {
+                          ...val,
+                          [question.id]: !val[question.id],
+                        };
+                      })
+                    }
+                  >
                     {
                       // TODO add logic for sr-only text
                     }
                     <span className="sr-only">Expand</span>
-                    <span className="ml-auto mt-2 block h-3 w-3 -rotate-45 border-r-[3px] border-t-[3px] border-custom-dark-cyan md:mt-4"></span>
+                    <span
+                      className={`ml-auto mr-1 mt-3 block h-3 w-3 border-r-[3px] border-t-[3px] border-custom-dark-cyan transition-transform md:mt-4 lg:mt-5 ${isExpanded[question.id] ? "-translate-y-1/2 rotate-[135deg]" : "-rotate-45"}`}
+                    ></span>
                   </button>
                 </legend>
 
@@ -135,6 +162,7 @@ const SubscribeForm = ({
                         key={question.id + option.name}
                         className={`cursor-pointer rounded-lg p-6 outline-2 outline-offset-2 outline-custom-dark-grey focus-within:outline md:pb-14 md:pt-8 ${formData[questionSplit] === option.name ? "bg-custom-dark-cyan text-custom-light-cream" : "bg-custom-very-light-grey text-custom-dark-blue focus-within:bg-custom-pale-orange hover:bg-custom-pale-orange"}`}
                         onClick={() => {
+                          if (question.id === 4 && isCapsuleSelected) return;
                           if (currentFormStep < question.id) {
                             setError(questionSplit, {
                               message:
@@ -143,6 +171,25 @@ const SubscribeForm = ({
                           } else {
                             clearErrors();
                             setValue(questionSplit, option.name);
+                            setIsExpanded((val) => {
+                              if (
+                                isCapsuleSelected ||
+                                option.name === "Capsule"
+                              ) {
+                                return {
+                                  ...val,
+                                  4: false,
+                                  [currentFormStep === 3
+                                    ? 5
+                                    : currentFormStep + 1]: true,
+                                };
+                              } else {
+                                return {
+                                  ...val,
+                                  [currentFormStep + 1]: true,
+                                };
+                              }
+                            });
                           }
                         }}
                       >
