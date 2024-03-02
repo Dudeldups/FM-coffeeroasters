@@ -87,6 +87,18 @@ const SubscribeForm = ({ isModalOpen, setIsModalOpen }: SubscribeFormProps) => {
         };
       }
     });
+
+    async function focusFieldset() {
+      if (currentFormStep > 1) {
+        await new Promise((resolve) => setTimeout(resolve, 400));
+
+        const nextFieldset = document.getElementById(`step-${currentFormStep}`);
+        nextFieldset?.focus();
+        nextFieldset?.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }
+
+    focusFieldset();
   }, [currentFormStep, isCapsuleSelected]);
 
   useEffect(() => {
@@ -97,7 +109,6 @@ const SubscribeForm = ({ isModalOpen, setIsModalOpen }: SubscribeFormProps) => {
       const price = prices[amount][howOften];
       const multiplier =
         howOften === "Every-week" ? 4 : howOften === "Every-2-weeks" ? 2 : 1;
-      console.log(multiplier);
       const finalPrice = multiplier * price;
       setTotalPrice(finalPrice.toFixed(2));
     }
@@ -118,9 +129,12 @@ const SubscribeForm = ({ isModalOpen, setIsModalOpen }: SubscribeFormProps) => {
             const questionSplit = question.name.split(" ").join("-");
 
             return (
-              <li key={question.id + question.question}>
+              <li
+                key={question.id + question.question}
+                id={`step-${question.id}`}
+              >
                 <fieldset
-                  aria-expanded={currentFormStep === question.id}
+                  aria-expanded={currentFormStep >= question.id}
                   aria-live="polite"
                 >
                   <legend className="peer relative w-full pr-7">
@@ -161,9 +175,9 @@ const SubscribeForm = ({ isModalOpen, setIsModalOpen }: SubscribeFormProps) => {
                   </legend>
 
                   <div
-                    className={`grid transition-[grid-template-rows] duration-300 md:mt-10 lg:mt-14 lg:gap-6 ${isExpanded[question.id] ? "grid-rows-[1fr] ease-in" : "grid-rows-[0fr] ease-out"}`}
+                    className={`grid transition-[grid-template-rows] duration-300 md:mt-8 lg:mt-10 lg:gap-6 ${isExpanded[question.id] ? "grid-rows-[1fr] ease-in" : "grid-rows-[0fr] ease-out"}`}
                   >
-                    <div className="grid gap-4 overflow-hidden md:grid-cols-3 md:gap-2">
+                    <div className="grid gap-4 overflow-hidden py-2 md:grid-cols-3 md:gap-2">
                       {question.options.map((option) => {
                         const optionSplit = option.name.split(" ").join("-");
                         const priceString =
@@ -255,7 +269,10 @@ const SubscribeForm = ({ isModalOpen, setIsModalOpen }: SubscribeFormProps) => {
           })}
         </ul>
 
-        <div className="mt-20 rounded-lg bg-custom-dark-blue px-6 py-7 text-lg text-white md:px-11 md:py-8 lg:px-16">
+        <div
+          id="step-6"
+          className="mt-20 rounded-lg bg-custom-dark-blue px-6 py-7 text-lg text-white md:px-11 md:py-8 lg:px-16"
+        >
           <h2 className="font-barlow text-sm font-normal uppercase text-custom-light-grey">
             Order summary
           </h2>
