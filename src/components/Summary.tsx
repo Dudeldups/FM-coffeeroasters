@@ -2,23 +2,26 @@ import { FieldValues } from "react-hook-form";
 
 interface SummaryProps {
   formData: FieldValues;
+  className?: string;
 }
 
-const Summary = ({ formData }: SummaryProps) => {
+const Summary = ({ formData, className }: SummaryProps) => {
   const isCapsuleSelected = formData["Preferences"] === "Capsule";
 
   return (
-    <p className="mt-3 font-fraunces font-black">
+    <p
+      className={`mt-3 font-fraunces font-black ${className ? className : ""}`}
+    >
       “I drink my coffee
       {isCapsuleSelected ? " using " : " as "}
       <span className="text-custom-dark-cyan">
         {formData["Preferences"] || "_____"}
       </span>
-      , with a $
+      , with a{" "}
       <span className="text-custom-dark-cyan">
         {formData["Bean-Type"] || "_____"}
       </span>{" "}
-      type of bean.
+      type of bean.{" "}
       <span className="text-custom-dark-cyan">
         {formData["Quantity"] || "_____"}
       </span>
