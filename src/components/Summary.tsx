@@ -16,6 +16,7 @@ const Summary = ({ formData, className }: SummaryProps) => {
       {isCapsuleSelected ? " using " : " as "}
       <span className="text-custom-dark-cyan">
         {formData["Preferences"] || "_____"}
+        {isCapsuleSelected ? "s" : ""}
       </span>
       , with a{" "}
       <span className="text-custom-dark-cyan">
