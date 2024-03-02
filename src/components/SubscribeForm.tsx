@@ -4,10 +4,11 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import subscriptionData from "../data/subscriptions.json";
 import priceData from "../data/prices.json";
 import Btn from "./Btn";
+import Summary from "./Summary";
+import Modal from "./Modal";
 
 interface SubscribeFormProps {
-  summaryString: string;
-  setSummaryString: React.Dispatch<React.SetStateAction<string>>;
+  isModalOpen: boolean;
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 interface Prices {
@@ -18,11 +19,7 @@ interface Prices {
   };
 }
 
-const SubscribeForm = ({
-  summaryString,
-  setSummaryString,
-  setIsModalOpen,
-}: SubscribeFormProps) => {
+const SubscribeForm = ({ isModalOpen, setIsModalOpen }: SubscribeFormProps) => {
   const [isExpanded, setIsExpanded] = useState<Record<number, boolean>>({
     1: true,
     2: false,
@@ -30,12 +27,13 @@ const SubscribeForm = ({
     4: false,
     5: false,
   });
+  const [totalPrice, setTotalPrice] = useState<string>("");
 
   const {
     register,
     handleSubmit,
     watch,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, isSubmitted },
     setError,
     clearErrors,
     setValue,
@@ -92,178 +90,191 @@ const SubscribeForm = ({
   }, [currentFormStep, isCapsuleSelected]);
 
   useEffect(() => {
-    setSummaryString(
-      `“I drink my coffee ${
-        isCapsuleSelected
-          ? "using Capsules"
-          : `as ${formData["Preferences"] || "_____"}`
-      }, with a ${formData["Bean-Type"] || "_____"} type of bean. ${formData["Quantity"] || "_____"}${
-        !isCapsuleSelected
-          ? formData["Grind-Option"]
-            ? ` ground ala ${formData["Grind-Option"]}`
-            : " ground ala _____"
-          : ""
-      }, sent to me ${formData["Deliveries"] || "_____"}.”`,
-    );
+    if (currentFormStep > 5) {
+      const amount = formData["Quantity"];
+      const howOften = formData["Deliveries"].split(" ").join("-");
+      //@ts-expect-error // TS doesn't like dynamic key
+      const price = prices[amount][howOften];
+      const multiplier =
+        howOften === "Every-week" ? 4 : howOften === "Every-2-weeks" ? 2 : 1;
+      console.log(multiplier);
+      const finalPrice = multiplier * price;
+      setTotalPrice(finalPrice.toFixed(2));
+    }
+  }, [formData, currentFormStep, prices]);
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [formData]);
-
-  console.log(currentFormStep);
-  console.log(isExpanded);
+  useEffect(() => {
+    if (isSubmitted) setIsModalOpen(true);
+  }, [isSubmitted, setIsModalOpen]);
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="flex-col-center my-28 max-w-[25rem] md:my-36 md:max-w-[45rem] lg:my-40 xl:items-end"
-    >
-      <ul className="grid gap-24 lg:gap-20">
-        {subscriptionData.map((question) => {
-          const questionSplit = question.name.split(" ").join("-");
+    <>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex-col-center my-28 max-w-[25rem] md:my-36 md:max-w-[45rem] lg:my-40 xl:items-end"
+      >
+        <ul className="grid gap-24 lg:gap-20">
+          {subscriptionData.map((question) => {
+            const questionSplit = question.name.split(" ").join("-");
 
-          return (
-            <li key={question.id + question.question}>
-              <fieldset
-                aria-expanded={currentFormStep === question.id}
-                aria-live="polite"
-              >
-                <legend className="peer relative w-full pr-7">
-                  <h2
-                    className={`text-lg/[1.75rem] text-custom-dark-grey md:text-xl lg:text-2xl ${question.id === 4 && isCapsuleSelected ? "opacity-50" : ""}`}
-                  >
-                    {question.question}
-                  </h2>
-
-                  <button
-                    type="button"
-                    className="absolute inset-0 z-10 flex"
-                    onClick={() =>
-                      setIsExpanded((val) => {
-                        if (question.id === 4 && isCapsuleSelected) {
-                          setError(questionSplit, {
-                            message:
-                              "You don't need to change this option if you've selected Capsules.",
-                          });
-
-                          return val;
-                        }
-                        return {
-                          ...val,
-                          [question.id]: !val[question.id],
-                        };
-                      })
-                    }
-                  >
-                    {
-                      // TODO add logic for sr-only text
-                    }
-                    <span className="sr-only">Expand</span>
-                    <span
-                      className={`ml-auto mr-1 mt-3 block h-3 w-3 border-r-[3px] border-t-[3px] border-custom-dark-cyan transition-transform md:mt-4 lg:mt-5 ${isExpanded[question.id] ? "-translate-y-1/2 rotate-[135deg]" : "-rotate-45"}`}
-                    ></span>
-                  </button>
-                </legend>
-
-                <div
-                  className={`grid transition-[grid-template-rows] duration-300 md:mt-10 lg:mt-14 lg:gap-6 ${isExpanded[question.id] ? "grid-rows-[1fr] ease-in" : "grid-rows-[0fr] ease-out"}`}
+            return (
+              <li key={question.id + question.question}>
+                <fieldset
+                  aria-expanded={currentFormStep === question.id}
+                  aria-live="polite"
                 >
-                  <div className="grid gap-4 overflow-hidden md:grid-cols-3 md:gap-2">
-                    {question.options.map((option) => {
-                      const optionSplit = option.name.split(" ").join("-");
-                      const priceString =
-                        currentFormStep > 3
-                          ? "$" +
-                            (prices[formData["Quantity"]]
-                              ? // @ts-expect-error // TS doesn't like dynamic key
-                                prices[formData["Quantity"]][optionSplit]
-                              : "")
-                          : "";
+                  <legend className="peer relative w-full pr-7">
+                    <h2
+                      className={`text-lg/[1.75rem] text-custom-dark-grey md:text-xl lg:text-2xl ${question.id === 4 && isCapsuleSelected ? "opacity-50" : ""}`}
+                    >
+                      {question.question}
+                    </h2>
 
-                      return (
-                        <div
-                          key={question.id + option.name}
-                          className={`cursor-pointer rounded-lg p-6 outline-2 outline-offset-2 outline-custom-dark-grey focus-within:outline mobile:first:mt-6 md:pb-14 md:pt-8 ${formData[questionSplit] === option.name ? "bg-custom-dark-cyan text-custom-light-cream" : "bg-custom-very-light-grey text-custom-dark-blue focus-within:bg-custom-pale-orange hover:bg-custom-pale-orange"}`}
-                          onClick={() => {
-                            if (question.id === 4 && isCapsuleSelected) return;
-                            if (currentFormStep < question.id) {
-                              setError(questionSplit, {
-                                message:
-                                  "Please answer the previous question first.",
-                              });
-                            } else {
-                              clearErrors();
-                              setValue(questionSplit, option.name);
-                            }
-                          }}
-                        >
-                          <input
-                            className="sr-only"
-                            {...register(questionSplit, {
-                              required:
-                                currentFormStep !== 4 || !isCapsuleSelected,
-                              disabled:
-                                question.id === 4 && isCapsuleSelected
-                                  ? true
-                                  : currentFormStep < question.id,
-                            })}
-                            type="radio"
-                            id={`${questionSplit}-${optionSplit}`}
-                            value={option.name}
-                            aria-describedby={`${questionSplit}-${optionSplit}-d`}
-                          />
-                          <label
-                            className={`cursor-pointer ${currentFormStep >= question.id ? "" : ""}`}
-                            htmlFor={`${questionSplit}-${optionSplit}`}
+                    <button
+                      type="button"
+                      className="absolute inset-0 z-10 flex"
+                      onClick={() =>
+                        setIsExpanded((val) => {
+                          if (question.id === 4 && isCapsuleSelected) {
+                            setError(questionSplit, {
+                              message:
+                                "You don't need to change this option if you've selected Capsules.",
+                            });
+
+                            return val;
+                          }
+                          return {
+                            ...val,
+                            [question.id]: !val[question.id],
+                          };
+                        })
+                      }
+                    >
+                      {
+                        // TODO add logic for sr-only text
+                      }
+                      <span className="sr-only">Expand</span>
+                      <span
+                        className={`ml-auto mr-1 mt-3 block h-3 w-3 border-r-[3px] border-t-[3px] border-custom-dark-cyan transition-transform md:mt-4 lg:mt-5 ${isExpanded[question.id] ? "-translate-y-1/2 rotate-[135deg]" : "-rotate-45"}`}
+                      ></span>
+                    </button>
+                  </legend>
+
+                  <div
+                    className={`grid transition-[grid-template-rows] duration-300 md:mt-10 lg:mt-14 lg:gap-6 ${isExpanded[question.id] ? "grid-rows-[1fr] ease-in" : "grid-rows-[0fr] ease-out"}`}
+                  >
+                    <div className="grid gap-4 overflow-hidden md:grid-cols-3 md:gap-2">
+                      {question.options.map((option) => {
+                        const optionSplit = option.name.split(" ").join("-");
+                        const priceString =
+                          currentFormStep > 3
+                            ? "$" +
+                              parseFloat(
+                                // @ts-expect-error // TS doesn't like dynamic key
+                                prices[formData["Quantity"]][optionSplit],
+                              ).toFixed(2)
+                            : "";
+
+                        return (
+                          <div
+                            key={question.id + option.name}
+                            className={`cursor-pointer rounded-lg p-6 outline-2 outline-offset-2 outline-custom-dark-grey focus-within:outline mobile:first:mt-6 md:pb-14 md:pt-8 ${formData[questionSplit] === option.name ? "bg-custom-dark-cyan text-custom-light-cream" : "bg-custom-very-light-grey text-custom-dark-blue focus-within:bg-custom-pale-orange hover:bg-custom-pale-orange"}`}
                             onClick={() => {
+                              if (question.id === 4 && isCapsuleSelected)
+                                return;
                               if (currentFormStep < question.id) {
                                 setError(questionSplit, {
                                   message:
                                     "Please answer the previous question first.",
                                 });
+                              } else {
+                                clearErrors();
+                                setValue(questionSplit, option.name);
                               }
                             }}
                           >
-                            <span
-                              className={`font-fraunces text-lg font-black`}
+                            <input
+                              className="sr-only"
+                              {...register(questionSplit, {
+                                required:
+                                  currentFormStep !== 4 || !isCapsuleSelected,
+                                disabled:
+                                  question.id === 4 && isCapsuleSelected
+                                    ? true
+                                    : currentFormStep < question.id,
+                              })}
+                              type="radio"
+                              id={`${questionSplit}-${optionSplit}`}
+                              value={option.name}
+                              aria-describedby={`${questionSplit}-${optionSplit}-d`}
+                            />
+                            <label
+                              className={`cursor-pointer ${currentFormStep >= question.id ? "" : ""}`}
+                              htmlFor={`${questionSplit}-${optionSplit}`}
+                              onClick={() => {
+                                if (currentFormStep < question.id) {
+                                  setError(questionSplit, {
+                                    message:
+                                      "Please answer the previous question first.",
+                                  });
+                                }
+                              }}
                             >
-                              {option.name}
-                            </span>
-                          </label>
+                              <span
+                                className={`font-fraunces text-lg font-black`}
+                              >
+                                {option.name}
+                              </span>
+                            </label>
 
-                          <p
-                            className="mt-2 md:mt-5"
-                            id={`${questionSplit}-${optionSplit}-d`}
-                          >
-                            {question.id === 5 && currentFormStep > 3
-                              ? priceString + " per shipment. "
-                              : ""}
-                            {option.description}
-                          </p>
-                        </div>
-                      );
-                    })}
+                            <p
+                              className="mt-2 md:mt-5"
+                              id={`${questionSplit}-${optionSplit}-d`}
+                            >
+                              {question.id === 5 && currentFormStep > 3
+                                ? priceString + " per shipment. "
+                                : ""}
+                              {option.description}
+                            </p>
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
-                </div>
-              </fieldset>
-              {errors[questionSplit] && (
-                <p>{errors[questionSplit]?.message as string}</p>
-              )}
-            </li>
-          );
-        })}
-      </ul>
+                </fieldset>
+                {errors[questionSplit] && (
+                  <p
+                    className="ml-6 mt-2 text-md font-semibold text-red-500"
+                    aria-live="polite"
+                  >
+                    {errors[questionSplit]?.message as string}
+                  </p>
+                )}
+              </li>
+            );
+          })}
+        </ul>
 
-      <div className="mt-20 rounded-lg bg-custom-dark-blue px-6 py-7 text-lg text-white md:px-11 md:py-8 lg:px-16">
-        <h2 className="font-barlow text-sm font-normal uppercase text-custom-light-grey">
-          Order summary
-        </h2>
-        <p className="mt-3 font-fraunces font-black">{summaryString}</p>
-      </div>
+        <div className="mt-20 rounded-lg bg-custom-dark-blue px-6 py-7 text-lg text-white md:px-11 md:py-8 lg:px-16">
+          <h2 className="font-barlow text-sm font-normal uppercase text-custom-light-grey">
+            Order summary
+          </h2>
+          <Summary formData={formData} />
+        </div>
 
-      <Btn className="mt-14" isDisabled={isSubmitting || currentFormStep < 6}>
-        {isSubmitting ? "Loading..." : "Create my plan!"}
-      </Btn>
-    </form>
+        <Btn className="mt-14" isDisabled={isSubmitting || currentFormStep < 6}>
+          {isSubmitting ? "Loading..." : "Create my plan!"}
+        </Btn>
+      </form>
+
+      {isModalOpen && (
+        <Modal
+          setIsModalOpen={setIsModalOpen}
+          formData={formData}
+          totalPrice={totalPrice}
+        />
+      )}
+    </>
   );
 };
 
