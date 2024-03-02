@@ -1,13 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SubscribeForm from "../components/SubscribeForm";
-import Modal from "../components/Modal";
 import heroImgSubscribeMobile from "../assets/plan/mobile/image-hero-blackcup.jpg";
 import heroImgSubscribeTablet from "../assets/plan/tablet/image-hero-blackcup.jpg";
 import heroImgSubscribeDesktop from "../assets/plan/desktop/image-hero-blackcup.jpg";
 
 const Subscribe = () => {
-  const [summaryString, setSummaryString] = useState<string>("");
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(true);
+
+  useEffect(() => {
+    // if (isModalOpen) {
+    //   document.body.style.overflow = "hidden";
+    // } else {
+    //   document.body.style.overflow = "auto";
+    // }
+  }, [isModalOpen]);
 
   return (
     <section className="flex-col-center max-w-7xl">
@@ -69,13 +75,6 @@ const Subscribe = () => {
       </div>
 
       <SubscribeForm
-        summaryString={summaryString}
-        setSummaryString={setSummaryString}
-        setIsModalOpen={setIsModalOpen}
-      />
-
-      <Modal
-        summaryString={summaryString}
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
       />
