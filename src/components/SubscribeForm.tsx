@@ -146,13 +146,13 @@ const SubscribeForm = ({ isModalOpen, setIsModalOpen }: SubscribeFormProps) => {
 
                     <button
                       type="button"
-                      className="absolute inset-0 z-10 flex"
+                      className="absolute inset-0 z-10 flex w-full"
                       onClick={() =>
                         setIsExpanded((val) => {
                           if (question.id === 4 && isCapsuleSelected) {
                             setError(questionSplit, {
                               message:
-                                "You don't need to change this option if you've selected Capsules.",
+                                "You don't need to change this option if you selected Capsules.",
                             });
 
                             return val;
@@ -175,9 +175,9 @@ const SubscribeForm = ({ isModalOpen, setIsModalOpen }: SubscribeFormProps) => {
                   </legend>
 
                   <div
-                    className={`grid transition-[grid-template-rows] duration-300 md:mt-8 lg:mt-10 lg:gap-6 ${isExpanded[question.id] ? "grid-rows-[1fr] ease-in" : "grid-rows-[0fr] ease-out"}`}
+                    className={`grid py-2 transition-[grid-template-rows] duration-300 md:mt-7 lg:mt-9 lg:gap-6 ${isExpanded[question.id] ? "grid-rows-[1fr] ease-in" : "grid-rows-[0fr] ease-out"}`}
                   >
-                    <div className="grid gap-4 overflow-hidden py-2 md:grid-cols-3 md:gap-2">
+                    <div className="grid gap-4 overflow-hidden md:grid-cols-3 md:gap-2">
                       {question.options.map((option) => {
                         const optionSplit = option.name.split(" ").join("-");
                         const priceString =
@@ -192,7 +192,7 @@ const SubscribeForm = ({ isModalOpen, setIsModalOpen }: SubscribeFormProps) => {
                         return (
                           <div
                             key={question.id + option.name}
-                            className={`cursor-pointer rounded-lg p-6 outline-2 outline-offset-2 outline-custom-dark-grey focus-within:outline mobile:first:mt-6 md:pb-14 md:pt-8 ${formData[questionSplit] === option.name ? "bg-custom-dark-cyan text-custom-light-cream" : "bg-custom-very-light-grey text-custom-dark-blue focus-within:bg-custom-pale-orange hover:bg-custom-pale-orange"}`}
+                            className={`cursor-pointer rounded-lg p-6 outline-2 outline-offset-2 outline-custom-dark-grey transition-colors focus-within:outline mobile:first:mt-6 md:pb-14 md:pt-8 ${formData[questionSplit] === option.name ? "bg-custom-dark-cyan text-custom-light-cream" : "bg-custom-very-light-grey text-custom-dark-blue focus-within:bg-custom-pale-orange hover:bg-custom-pale-orange"}`}
                             onClick={() => {
                               if (question.id === 4 && isCapsuleSelected)
                                 return;
