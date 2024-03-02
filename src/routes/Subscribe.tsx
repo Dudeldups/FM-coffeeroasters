@@ -5,14 +5,14 @@ import heroImgSubscribeTablet from "../assets/plan/tablet/image-hero-blackcup.jp
 import heroImgSubscribeDesktop from "../assets/plan/desktop/image-hero-blackcup.jpg";
 
 const Subscribe = () => {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(true);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    // if (isModalOpen) {
-    //   document.body.style.overflow = "hidden";
-    // } else {
-    //   document.body.style.overflow = "auto";
-    // }
+    if (isModalOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
   }, [isModalOpen]);
 
   return (
