@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Btn from "./Btn";
 import { FieldValues } from "react-hook-form";
 import Summary from "./Summary";
@@ -10,9 +10,31 @@ interface ModalProps {
 }
 
 const Modal = ({ formData, setIsModalOpen, totalPrice }: ModalProps) => {
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsModalOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleContentClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+  };
+
   return (
-    <div className="fixed inset-0 z-40 grid place-content-center bg-black bg-opacity-80 p-4">
-      <div className="overflow-hidden rounded-lg">
+    <div
+      className="fixed inset-0 z-40 grid place-content-center bg-black bg-opacity-80 p-4"
+      onClick={() => setIsModalOpen(false)}
+    >
+      <div className="overflow-hidden rounded-lg" onClick={handleContentClick}>
         <div className="z-50 bg-custom-dark-blue p-3 xs:p-6 md:p-12">
           <h2 className="text-custom-light-cream md:text-2xl">Order Summary</h2>
         </div>
