@@ -119,10 +119,38 @@ const SubscribeForm = ({ isModalOpen, setIsModalOpen }: SubscribeFormProps) => {
   }, [isSubmitted, setIsModalOpen]);
 
   return (
-    <>
+    <div className="my-28 flex w-full max-w-[70rem] justify-center md:my-36 lg:my-40 xl:justify-between">
+      <ol className="-mt-4 hidden content-start font-fraunces text-lg font-bold text-custom-grey xl:grid">
+        <li
+          className={`py-4 before:mr-4 before:content-["0"_counter(list-item)] ${currentFormStep === 1 ? "text-custom-dark-blue before:text-custom-dark-blue" : ""}`}
+        >
+          Preferences
+        </li>
+        <li
+          className={`border-t border-custom-grey py-4 pr-8 before:mr-4 before:content-["0"_counter(list-item)] ${currentFormStep === 2 ? "text-custom-dark-blue before:text-custom-dark-blue" : ""}`}
+        >
+          Bean Type
+        </li>
+        <li
+          className={`border-t border-custom-grey py-4 pr-8 before:mr-4 before:content-["0"_counter(list-item)] ${currentFormStep === 3 ? "text-custom-dark-blue before:text-custom-dark-blue" : ""}`}
+        >
+          Quantity
+        </li>
+        <li
+          className={`border-t border-custom-grey py-4 pr-8 before:mr-4 before:content-["0"_counter(list-item)] ${isCapsuleSelected ? "opacity-50" : ""} ${currentFormStep === 4 ? "text-custom-dark-blue before:text-custom-dark-blue" : ""}`}
+        >
+          Grind Option
+        </li>
+        <li
+          className={`border-t border-custom-grey py-4 pr-8 before:mr-4 before:content-["0"_counter(list-item)] ${currentFormStep === 5 ? "text-custom-dark-blue before:text-custom-dark-blue" : ""}`}
+        >
+          Deliveries
+        </li>
+      </ol>
+
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex-col-center my-28 max-w-[25rem] md:my-36 md:max-w-[45rem] lg:my-40 xl:items-end"
+        className="flex-col-center max-w-[25rem] md:max-w-[45rem] xl:items-end"
       >
         <ul className="grid gap-24 lg:gap-20">
           {subscriptionData.map((question) => {
@@ -291,7 +319,7 @@ const SubscribeForm = ({ isModalOpen, setIsModalOpen }: SubscribeFormProps) => {
           totalPrice={totalPrice}
         />
       )}
-    </>
+    </div>
   );
 };
 
