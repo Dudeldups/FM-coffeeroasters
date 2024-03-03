@@ -27,11 +27,15 @@ Your users should be able to:
 - See hover states for all interactive elements throughout the site
 - Make selections to create a coffee subscription and see an order summary modal of their choices (details provided below)
 
-<!-- ### Added features -->
+### Added features
+
+- Form logic: Added error if user tries to skip a step inside the form
+- Price inside last form field is only shown if weight is selected
+- All interactive text is updated upon input changes
 
 ### Links
 
-- [Solution on Frontend Mentor]()
+- [Solution on Frontend Mentor](https://www.frontendmentor.io/solutions/reacttstailwind-coffeeroasters-subscription-site-xDz3AR4IzZ)
 
 - [Live site](https://coffeeroasters-9000.netlify.app/)
 
@@ -47,6 +51,7 @@ Your users should be able to:
 
 - React (TypeScript)
 - React Router
+- React Hook Form
 - Tailwind CSS
 
 ## Author
