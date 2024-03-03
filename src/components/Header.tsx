@@ -36,7 +36,7 @@ const Header = () => {
           onClick={() => setIsHamburgerMenuOpen((prev) => !prev)}
         >
           <span className="sr-only">
-            {isHamburgerMenuOpen ? "Open" : "Close"} navigation list
+            {isHamburgerMenuOpen ? "Close" : "Open"} navigation list
           </span>
           <span
             className={`relative h-1 w-full rounded-full bg-black transition-colors duration-300 ease-in-out before:absolute before:inset-0 before:h-1 before:rounded-full before:bg-black before:transition-[transform] before:duration-300 before:ease-in-out after:absolute after:inset-0 after:h-1 after:rounded-full after:bg-black after:transition-[transform] after:duration-300 after:ease-in-out ${isHamburgerMenuOpen ? "bg-transparent before:-rotate-45 before:delay-300 after:rotate-45 after:delay-300" : "delay-200 before:-translate-y-2 after:translate-y-2"}`}
@@ -51,27 +51,27 @@ const Header = () => {
           <ul
             className={`flex gap-7 duration-300 mobile:flex-col mobile:items-center mobile:pt-12 mobile:transition-opacity md:gap-8 ${isHamburgerMenuOpen ? "duration-150 mobile:opacity-100" : "mobile:opacity-0"} ${showNavbar ? "" : "mobile:hidden"}`}
           >
-            <li>
+            <li className="relative after:-left-2 after:-z-10 after:h-full after:w-[calc(100%+1rem)] after:rounded-md after:bg-transparent after:transition-colors md:after:absolute md:hover:after:bg-custom-pale-orange">
               <NavLink
-                className="md:text-[.875rem] md:font-bold md:uppercase md:tracking-[0.06rem] md:text-custom-dark-grey"
+                className="outline-offset-4 hover:text-black focus-visible:text-black md:text-[.875rem] md:font-bold md:uppercase md:tracking-[0.06rem] md:text-custom-dark-grey"
                 to="/"
                 onClick={() => setIsHamburgerMenuOpen(false)}
               >
                 Home
               </NavLink>
             </li>
-            <li>
+            <li className="relative after:-left-2 after:-z-10 after:h-full after:w-[calc(100%+1rem)] after:rounded-md after:bg-transparent after:transition-colors md:after:absolute md:hover:after:bg-custom-pale-orange">
               <NavLink
-                className="md:text-[.875rem] md:font-bold md:uppercase md:tracking-[0.06rem] md:text-custom-dark-grey"
+                className="outline-offset-4 hover:text-black focus-visible:text-black md:text-[.875rem] md:font-bold md:uppercase md:tracking-[0.06rem] md:text-custom-dark-grey"
                 to="/about"
                 onClick={() => setIsHamburgerMenuOpen(false)}
               >
                 About us
               </NavLink>
             </li>
-            <li>
+            <li className="relative after:-left-2 after:-z-10 after:h-full after:w-[calc(100%+1rem)] after:rounded-md after:bg-transparent after:transition-colors md:after:absolute md:hover:after:bg-custom-pale-orange">
               <NavLink
-                className="md:text-[.875rem] md:font-bold md:uppercase md:tracking-[0.06rem] md:text-custom-dark-grey"
+                className="outline-offset-4 hover:text-black focus-visible:text-black md:text-[.875rem] md:font-bold md:uppercase md:tracking-[0.06rem] md:text-custom-dark-grey"
                 to="/subscribe"
                 onClick={() => setIsHamburgerMenuOpen(false)}
               >

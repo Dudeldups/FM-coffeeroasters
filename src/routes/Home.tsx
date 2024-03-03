@@ -10,7 +10,6 @@ import dancheImg from "../assets/home/desktop/image-danche.png";
 import beanImg from "../assets/home/desktop/icon-coffee-bean.svg";
 import giftImg from "../assets/home/desktop/icon-gift.svg";
 import truckImg from "../assets/home/desktop/icon-truck.svg";
-import Btn from "../components/Btn";
 import { Link } from "react-router-dom";
 
 const Home = () => {
@@ -35,8 +34,11 @@ const Home = () => {
             curated artisan coffees from our best roasters delivered directly to
             your door, at your schedule.
           </p>
-          <Link className="z-10" to="/subscribe">
-            <Btn>Create your plan</Btn>
+          <Link
+            className={`z-10 rounded-lg bg-custom-dark-cyan px-8 py-4 font-fraunces text-md font-black leading-6 text-custom-light-cream transition-colors hover:bg-custom-pale-orange hover:text-black focus-visible:bg-custom-pale-orange focus-visible:text-black disabled:bg-custom-dark-grey`}
+            to="/subscribe"
+          >
+            Create your plan
           </Link>
         </article>
       </div>
@@ -200,8 +202,11 @@ const Home = () => {
           </li>
         </ol>
 
-        <Link className="mt-20 block md:self-start lg:mt-16" to="/subscribe">
-          <Btn>Create your plan</Btn>
+        <Link
+          className={`mt-20 rounded-lg bg-custom-dark-cyan px-8 py-4 font-fraunces text-md font-black leading-6 text-custom-light-cream transition-colors hover:bg-custom-pale-orange hover:text-black focus-visible:bg-custom-pale-orange focus-visible:text-black disabled:bg-custom-dark-grey md:self-start lg:mt-16`}
+          to="/subscribe"
+        >
+          Create your plan
         </Link>
       </div>
     </section>
