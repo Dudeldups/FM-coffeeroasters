@@ -11,6 +11,8 @@ const Footer = () => {
         <img
           className="w-52 sm:w-60"
           src={coffeeroastersLogoWhite}
+          height={27}
+          width={237}
           alt="Coffeeroasters logo"
         />
 

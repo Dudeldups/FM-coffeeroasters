@@ -67,6 +67,8 @@ const Home = () => {
               className="max-w-[12rem] md:max-w-[14rem]"
               src={granEspressoImg}
               alt=""
+              height={356}
+              width={452}
               aria-hidden="true"
             />
             <div className="max-w-[18rem] text-center md:text-left xl:text-center">
@@ -83,6 +85,8 @@ const Home = () => {
               className="max-w-[12rem] md:max-w-[14rem]"
               src={planaltoImg}
               alt=""
+              height={356}
+              width={452}
               aria-hidden="true"
             />
             <div className="max-w-[18rem] text-center md:text-left xl:text-center">
@@ -99,6 +103,8 @@ const Home = () => {
               className="max-w-[12rem] md:max-w-[14rem]"
               src={piccolloImg}
               alt=""
+              height={356}
+              width={452}
               aria-hidden="true"
             />
             <div className="max-w-[18rem] text-center md:text-left xl:text-center">
@@ -115,6 +121,8 @@ const Home = () => {
               className="max-w-[12rem] md:max-w-[14rem]"
               src={dancheImg}
               alt=""
+              height={356}
+              width={452}
               aria-hidden="true"
             />
             <div className="max-w-[18rem] text-center md:text-left xl:text-center">
@@ -143,7 +151,13 @@ const Home = () => {
 
         <ul className="col-[1_/_span_1] row-[2_/_span_2] mx-auto grid justify-center gap-6 px-4 xs:px-6 sm:px-8 lg:grid-flow-col lg:px-4 xl:max-w-[72rem] xl:gap-8">
           <li className="flex-col-center max-w-[20rem] gap-14 rounded-lg bg-custom-dark-cyan px-4 pb-12 pt-16 sm:px-10 md:max-w-[38rem] md:flex-row md:px-14 md:py-10 lg:flex-col lg:px-5 lg:pb-12 lg:pt-16 xl:px-12">
-            <img src={beanImg} alt="" aria-hidden="true" />
+            <img
+              src={beanImg}
+              alt=""
+              aria-hidden="true"
+              height={72}
+              width={73}
+            />
             <div className="text-center md:text-left lg:text-center">
               <h3>Best quality</h3>
               <p className="mt-6">
@@ -154,7 +168,13 @@ const Home = () => {
           </li>
 
           <li className="flex-col-center max-w-[20rem] gap-14 rounded-lg bg-custom-dark-cyan px-4 pb-12 pt-16 sm:px-10 md:max-w-[38rem] md:flex-row md:px-14 md:py-10 lg:flex-col lg:px-5 lg:pb-12 lg:pt-16 xl:px-12">
-            <img src={giftImg} alt="" aria-hidden="true" />
+            <img
+              src={giftImg}
+              alt=""
+              aria-hidden="true"
+              height={72}
+              width={72}
+            />
             <div className="text-center md:text-left lg:text-center">
               <h3>Exclusive benefits</h3>
               <p className="mt-6">
@@ -165,7 +185,13 @@ const Home = () => {
           </li>
 
           <li className="flex-col-center max-w-[20rem] gap-14 rounded-lg bg-custom-dark-cyan px-4 pb-12 pt-16 sm:px-10 md:max-w-[38rem] md:flex-row md:px-14 md:py-10 lg:flex-col lg:px-5 lg:pb-12 lg:pt-16 xl:px-12">
-            <img src={truckImg} alt="" aria-hidden="true" />
+            <img
+              src={truckImg}
+              alt=""
+              aria-hidden="true"
+              height={50}
+              width={72}
+            />
             <div className="text-center md:text-left lg:text-center">
               <h3>Free shipping</h3>
               <p className="mt-6">

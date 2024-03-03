@@ -139,6 +139,8 @@ const AboutUs = () => {
               className="mobile:mx-auto"
               src={ukImg}
               alt=""
+              height={50}
+              width={42}
               aria-hidden="true"
             />
             <address className="grid text-sm not-italic mobile:text-center">
@@ -170,6 +172,8 @@ const AboutUs = () => {
               className="mobile:mx-auto"
               src={canadaImg}
               alt=""
+              height={50}
+              width={52}
               aria-hidden="true"
             />
             <address className="grid text-sm not-italic mobile:text-center">
@@ -200,6 +204,8 @@ const AboutUs = () => {
               className="mobile:mx-auto"
               src={australiaImg}
               alt=""
+              height={44}
+              width={49}
               aria-hidden="true"
             />
             <address className="grid text-sm not-italic mobile:text-center">
