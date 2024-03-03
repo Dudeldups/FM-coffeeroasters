@@ -48,6 +48,7 @@ const Footer = () => {
             <a
               className="transition-colors hover:text-custom-pale-orange focus-visible:text-custom-pale-orange"
               href="/"
+              aria-label="facebook"
             >
               <Facebook />
             </a>
@@ -56,6 +57,7 @@ const Footer = () => {
             <a
               className="transition-colors hover:text-custom-pale-orange focus-visible:text-custom-pale-orange"
               href="/"
+              aria-label="twitter"
             >
               <Twitter />
             </a>
@@ -64,6 +66,7 @@ const Footer = () => {
             <a
               className="transition-colors hover:text-custom-pale-orange focus-visible:text-custom-pale-orange"
               href="/"
+              aria-label="instagram"
             >
               <Instagram />
             </a>
