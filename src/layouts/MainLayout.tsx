@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import ScrollToTop from "../components/ScrollToTop";
+import Loading from "../components/Loading";
 
 const Outlet = lazy(() =>
   import("react-router-dom").then((mod) => ({ default: mod.Outlet })),
@@ -15,7 +16,7 @@ const MainLayout = () => {
       <Header />
 
       <main className="flex-1 px-4 xs:px-6 md:px-10">
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Loading />}>
           <Outlet />
         </Suspense>
       </main>
