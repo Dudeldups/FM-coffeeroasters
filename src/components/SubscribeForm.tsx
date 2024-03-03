@@ -122,29 +122,44 @@ const SubscribeForm = ({ isModalOpen, setIsModalOpen }: SubscribeFormProps) => {
     <div className="my-28 flex w-full max-w-[70rem] justify-center md:my-36 lg:my-40 xl:justify-between">
       <ol className="-mt-4 hidden content-start font-fraunces text-lg font-bold text-custom-grey xl:grid">
         <li
-          className={`py-4 before:mr-4 before:content-["0"_counter(list-item)] ${currentFormStep === 1 ? "text-custom-dark-blue before:text-custom-dark-blue" : ""}`}
+          className={`relative py-4 pr-8 before:mr-4 before:content-["0"_counter(list-item)] ${currentFormStep === 1 ? "text-custom-dark-blue before:text-custom-dark-blue" : ""}`}
         >
           Preferences
+          <span
+            className={`absolute right-2 top-1/2 inline-block h-4 w-4 -translate-y-1/2 rounded-full border-2 transition-colors ${currentFormStep === 1 ? "border-custom-dark-cyan bg-custom-pale-orange" : "border-transparent bg-transparent"}`}
+          ></span>
         </li>
         <li
-          className={`border-t border-custom-grey py-4 pr-8 before:mr-4 before:content-["0"_counter(list-item)] ${currentFormStep === 2 ? "text-custom-dark-blue before:text-custom-dark-blue" : ""}`}
+          className={`relative border-t border-custom-grey py-4 pr-8 before:mr-4 before:content-["0"_counter(list-item)] ${currentFormStep === 2 ? "text-custom-dark-blue before:text-custom-dark-blue" : ""}`}
         >
           Bean Type
+          <span
+            className={`absolute right-2 top-1/2 inline-block h-4 w-4 -translate-y-1/2 rounded-full border-2 transition-colors ${currentFormStep === 2 ? "border-custom-dark-cyan bg-custom-pale-orange" : "border-transparent bg-transparent"}`}
+          ></span>
         </li>
         <li
-          className={`border-t border-custom-grey py-4 pr-8 before:mr-4 before:content-["0"_counter(list-item)] ${currentFormStep === 3 ? "text-custom-dark-blue before:text-custom-dark-blue" : ""}`}
+          className={`relative border-t border-custom-grey py-4 pr-8 before:mr-4 before:content-["0"_counter(list-item)] ${currentFormStep === 3 ? "text-custom-dark-blue before:text-custom-dark-blue" : ""}`}
         >
           Quantity
+          <span
+            className={`absolute right-2 top-1/2 inline-block h-4 w-4 -translate-y-1/2 rounded-full border-2 transition-colors ${currentFormStep === 3 ? "border-custom-dark-cyan bg-custom-pale-orange" : "border-transparent bg-transparent"}`}
+          ></span>
         </li>
         <li
-          className={`border-t border-custom-grey py-4 pr-8 before:mr-4 before:content-["0"_counter(list-item)] ${isCapsuleSelected ? "opacity-50" : ""} ${currentFormStep === 4 ? "text-custom-dark-blue before:text-custom-dark-blue" : ""}`}
+          className={`relative border-t border-custom-grey py-4 pr-8 before:mr-4 before:content-["0"_counter(list-item)] ${isCapsuleSelected ? "opacity-50" : ""} ${currentFormStep === 4 ? "text-custom-dark-blue before:text-custom-dark-blue" : ""}`}
         >
           Grind Option
+          <span
+            className={`absolute right-2 top-1/2 inline-block h-4 w-4 -translate-y-1/2 rounded-full border-2 transition-colors ${currentFormStep === 4 ? "border-custom-dark-cyan bg-custom-pale-orange" : "border-transparent bg-transparent"}`}
+          ></span>
         </li>
         <li
-          className={`border-t border-custom-grey py-4 pr-8 before:mr-4 before:content-["0"_counter(list-item)] ${currentFormStep === 5 ? "text-custom-dark-blue before:text-custom-dark-blue" : ""}`}
+          className={`relative border-t border-custom-grey py-4 pr-8 before:mr-4 before:content-["0"_counter(list-item)] ${currentFormStep === 5 ? "text-custom-dark-blue before:text-custom-dark-blue" : ""}`}
         >
           Deliveries
+          <span
+            className={`absolute right-2 top-1/2 inline-block h-4 w-4 -translate-y-1/2 rounded-full border-2 transition-colors ${currentFormStep === 5 ? "border-custom-dark-cyan bg-custom-pale-orange" : "border-transparent bg-transparent"}`}
+          ></span>
         </li>
       </ol>
 
