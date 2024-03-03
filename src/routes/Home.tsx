@@ -17,12 +17,25 @@ const Home = () => {
     <section className="max-w-7xl">
       <div className="relative flex max-h-[35rem] items-start justify-center overflow-hidden rounded-lg lg:max-h-full">
         <picture className="">
-          <source srcSet={heroImgHomeDesktop} media="(min-width: 60em)" />
-          <source srcSet={heroImgHomeTablet} media="(min-width: 42.5em)" />
+          <source
+            srcSet={heroImgHomeDesktop}
+            media="(min-width: 60em)"
+            height={600}
+            width={1280}
+          />
+          <source
+            srcSet={heroImgHomeTablet}
+            media="(min-width: 42.5em)"
+            height={1000}
+            width={1378}
+          />
           <img
             className=""
             src={heroImgHomeMobile}
+            loading="lazy"
             alt="An antique coffee press, a glass and coffee beans lying around it."
+            height={1000}
+            width={654}
           />
         </picture>
         <article className="flex-col-center absolute inset-0 mx-auto px-5 text-custom-light-cream after:absolute after:inset-0 after:bg-black after:bg-opacity-10 mobile:text-center md:ml-0 md:items-start md:px-[3.75rem] xl:px-20">

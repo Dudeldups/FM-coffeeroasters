@@ -19,11 +19,24 @@ const Subscribe = () => {
     <section className="flex-col-center max-w-7xl">
       <div className="flex-center relative max-h-[27rem] overflow-hidden rounded-lg lg:max-h-full">
         <picture>
-          <source srcSet={heroImgSubscribeDesktop} media="(min-width: 60em)" />
-          <source srcSet={heroImgSubscribeTablet} media="(min-width: 42.5em)" />
+          <source
+            srcSet={heroImgSubscribeDesktop}
+            media="(min-width: 60em)"
+            height={450}
+            width={1280}
+          />
+          <source
+            srcSet={heroImgSubscribeTablet}
+            media="(min-width: 42.5em)"
+            height={800}
+            width={1378}
+          />
           <img
             src={heroImgSubscribeMobile}
+            loading="lazy"
             alt="A coffee cup with a decorated cream flower."
+            height={800}
+            width={654}
           />
         </picture>
 

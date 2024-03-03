@@ -16,11 +16,24 @@ const AboutUs = () => {
     <section className="flex-col-center max-w-7xl">
       <div className="flex-center relative max-h-[27rem] overflow-hidden rounded-lg lg:max-h-full">
         <picture>
-          <source srcSet={heroImgAboutDesktop} media="(min-width: 60em)" />
-          <source srcSet={heroImgAboutTablet} media="(min-width: 42.5em)" />
+          <source
+            srcSet={heroImgAboutDesktop}
+            media="(min-width: 60em)"
+            height={450}
+            width={1280}
+          />
+          <source
+            srcSet={heroImgAboutTablet}
+            media="(min-width: 42.5em)"
+            height={800}
+            width={1378}
+          />
           <img
             src={heroImgAboutMobile}
+            loading="lazy"
             alt="A neatly decorated cup of coffe viewed from above"
+            height={800}
+            width={654}
           />
         </picture>
 
@@ -39,11 +52,24 @@ const AboutUs = () => {
 
       <div className="flex-col-center mt-28 gap-12 text-center mobile:max-w-[25rem] md:mt-36 md:grid md:max-w-[45rem] md:grid-flow-col md:grid-cols-[40%_50%] md:justify-between md:gap-0 md:text-left lg:mt-40 lg:max-w-[70rem] lg:gap-20">
         <picture>
-          <source srcSet={commitmentImgDesktop} media="(min-width: 60em)" />
-          <source srcSet={commitmentImgTablet} media="(min-width: 42.5em)" />
+          <source
+            srcSet={commitmentImgDesktop}
+            media="(min-width: 60em)"
+            height={520}
+            width={445}
+          />
+          <source
+            srcSet={commitmentImgTablet}
+            media="(min-width: 42.5em)"
+            height={470}
+            width={281}
+          />
           <img
             className="rounded-lg md:mr-[1.5rem]"
             src={commitmentImgMobile}
+            loading="lazy"
+            height={800}
+            width={654}
             alt="A barrista decorating the top of a coffee with a pattern."
           />
         </picture>
@@ -67,11 +93,24 @@ const AboutUs = () => {
 
       <div className="mt-28 grid w-[min(100%,_70rem)] rounded-lg text-custom-light-cream after:-z-10 after:col-[1_/_span_1] after:row-[2_/_span_2] after:rounded-lg after:bg-custom-dark-blue md:mt-36 lg:mt-40 lg:max-w-[70rem] lg:grid-cols-[15fr_12fr] lg:grid-rows-[clamp(1.5rem,_-10.5rem_+_20vw,_5.5rem)_1fr_clamp(1.5rem,_-10.5rem_+_20vw,_5.5rem)] lg:gap-x-[clamp(3rem,_-23.5rem_+_44.44vw,_8rem)] lg:after:col-[1_/_span_2] lg:after:row-[2_/_span_2] lg:after:-mx-20">
         <picture className="col-[1_/_span_1] row-[1_/_span_2] px-6 sm:px-14 lg:col-[2_/_span_1] lg:row-[1_/_span_2] lg:px-0">
-          <source srcSet={qualityImgDesktop} media="(min-width: 60em)" />
-          <source srcSet={qualityImgTablet} media="(min-width: 48em)" />
+          <source
+            srcSet={qualityImgDesktop}
+            media="(min-width: 60em)"
+            height={474}
+            width={445}
+          />
+          <source
+            srcSet={qualityImgTablet}
+            media="(min-width: 48em)"
+            height={320}
+            width={573}
+          />
           <img
             className="mx-auto rounded-lg"
             src={qualityImgMobile}
+            loading="lazy"
+            height={312}
+            width={558}
             alt="A coffee cup with a decorated cream flower on a wooden table."
           />
         </picture>

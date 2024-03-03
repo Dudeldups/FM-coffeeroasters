@@ -25,6 +25,9 @@ const Header = () => {
           <img
             className="max-w-40 md:max-w-60"
             src={coffeeroastersLogo}
+            loading="lazy"
+            height={27}
+            width={237}
             alt="Coffeeroasters logo"
           />
         </Link>
