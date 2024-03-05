@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import coffeeroastersLogo from "../assets/shared/desktop/logo.svg";
 
-//TODO: Add hover and focus states to the links
-
 const Header = () => {
   const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(false);

@@ -190,6 +190,8 @@ const SubscribeForm = ({ isModalOpen, setIsModalOpen }: SubscribeFormProps) => {
                     <button
                       type="button"
                       className="absolute inset-0 z-10 flex w-full"
+                      aria-pressed={isExpanded[question.id]}
+                      aria-live="polite"
                       onClick={() =>
                         setIsExpanded((val) => {
                           if (question.id === 4 && isCapsuleSelected) {
@@ -207,10 +209,9 @@ const SubscribeForm = ({ isModalOpen, setIsModalOpen }: SubscribeFormProps) => {
                         })
                       }
                     >
-                      {
-                        // TODO add logic for sr-only text
-                      }
-                      <span className="sr-only">Expand</span>
+                      <span className="sr-only">
+                        {isExpanded[question.id] ? "collapse" : "expand"}
+                      </span>
                       <span
                         className={`ml-auto mr-1 mt-3 block h-3 w-3 border-r-[3px] border-t-[3px] border-custom-dark-cyan transition-transform md:mt-4 lg:mt-5 ${isExpanded[question.id] ? "-translate-y-1/2 rotate-[135deg]" : "-rotate-45"}`}
                       ></span>
