@@ -11,6 +11,20 @@ import beanImg from "../assets/home/desktop/icon-coffee-bean.svg";
 import giftImg from "../assets/home/desktop/icon-gift.svg";
 import truckImg from "../assets/home/desktop/icon-truck.svg";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+
+const fadeInVariants = {
+  hidden: { y: 100, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      ease: "easeInOut",
+      staggerChildren: 0.4,
+    },
+  },
+};
 
 const Home = () => {
   return (
@@ -57,9 +71,15 @@ const Home = () => {
       </div>
 
       <div className="relative mt-32 md:mt-40 lg:mt-44">
-        <h2 className="absolute -z-10 w-full bg-gradient-to-b from-custom-dark-grey bg-clip-text text-center text-[2.3rem] leading-none text-transparent xs:text-[2.8rem] sm:text-[3.8rem] md:text-[6rem] lg:text-[9rem] xl:text-[10.5rem]">
+        <motion.h2
+          className="absolute -z-10 w-full bg-gradient-to-b from-custom-dark-grey bg-clip-text text-center text-[2.3rem] leading-none text-transparent xs:text-[2.8rem] sm:text-[3.8rem] md:text-[6rem] lg:text-[9rem] xl:text-[10.5rem]"
+          variants={fadeInVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.25 }}
+        >
           our collection
-        </h2>
+        </motion.h2>
 
         <ul className="flex-col-center mx-auto gap-12 pt-24 md:pt-16 lg:pt-24 xl:max-w-[70rem] xl:flex-row xl:items-start xl:pt-28">
           <li className="flex-col-center gap-5 md:flex-row md:gap-9 xl:flex-col">
@@ -137,20 +157,41 @@ const Home = () => {
       </div>
 
       <div className="mt-28 grid text-custom-light-cream after:-z-10 after:col-[1_/_span_1] after:row-[1_/_span_2] after:rounded-lg after:bg-custom-dark-blue md:mt-36 xl:mt-48">
-        <div className="col-[1_/_span_1] row-[1_/_span_1] mx-auto max-w-[35rem] px-4 py-16 text-center xs:px-6 sm:px-8">
-          <h2 className="text-[1.75rem] leading-none md:text-2xl">
+        <motion.div
+          className="col-[1_/_span_1] row-[1_/_span_1] mx-auto max-w-[35rem] px-4 py-16 text-center xs:px-6 sm:px-8"
+          variants={fadeInVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <motion.h2
+            className="text-[1.75rem] leading-none md:text-2xl"
+            variants={fadeInVariants}
+          >
             Why choose us?
-          </h2>
-          <p className="col-[1_/_span_1] row-[2_/_span_1] mt-6 opacity-80">
+          </motion.h2>
+          <motion.p
+            className="col-[1_/_span_1] row-[2_/_span_1] mt-6 opacity-80"
+            variants={fadeInVariants}
+          >
             A large part of our role is choosing which particular coffees will
             be featured in our range. This means working closely with the best
             coffee growers to give you a more impactful experience on every
             level.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        <ul className="col-[1_/_span_1] row-[2_/_span_2] mx-auto grid justify-center gap-6 px-4 xs:px-6 sm:px-8 lg:grid-flow-col lg:px-4 xl:max-w-[72rem] xl:gap-8">
-          <li className="flex-col-center max-w-[20rem] gap-14 rounded-lg bg-custom-dark-cyan px-4 pb-12 pt-16 sm:px-10 md:max-w-[38rem] md:flex-row md:px-14 md:py-10 lg:flex-col lg:px-5 lg:pb-12 lg:pt-16 xl:px-12">
+        <motion.ul
+          className="col-[1_/_span_1] row-[2_/_span_2] mx-auto grid justify-center gap-6 px-4 xs:px-6 sm:px-8 lg:grid-flow-col lg:px-4 xl:max-w-[72rem] xl:gap-8"
+          variants={fadeInVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+        >
+          <motion.li
+            className="flex-col-center max-w-[20rem] gap-14 rounded-lg bg-custom-dark-cyan px-4 pb-12 pt-16 sm:px-10 md:max-w-[38rem] md:flex-row md:px-14 md:py-10 lg:flex-col lg:px-5 lg:pb-12 lg:pt-16 xl:px-12"
+            variants={fadeInVariants}
+          >
             <img
               src={beanImg}
               alt=""
@@ -165,9 +206,12 @@ const Home = () => {
                 from each of our roasters.
               </p>
             </div>
-          </li>
+          </motion.li>
 
-          <li className="flex-col-center max-w-[20rem] gap-14 rounded-lg bg-custom-dark-cyan px-4 pb-12 pt-16 sm:px-10 md:max-w-[38rem] md:flex-row md:px-14 md:py-10 lg:flex-col lg:px-5 lg:pb-12 lg:pt-16 xl:px-12">
+          <motion.li
+            className="flex-col-center max-w-[20rem] gap-14 rounded-lg bg-custom-dark-cyan px-4 pb-12 pt-16 sm:px-10 md:max-w-[38rem] md:flex-row md:px-14 md:py-10 lg:flex-col lg:px-5 lg:pb-12 lg:pt-16 xl:px-12"
+            variants={fadeInVariants}
+          >
             <img
               src={giftImg}
               alt=""
@@ -182,9 +226,12 @@ const Home = () => {
                 your first shipment.
               </p>
             </div>
-          </li>
+          </motion.li>
 
-          <li className="flex-col-center max-w-[20rem] gap-14 rounded-lg bg-custom-dark-cyan px-4 pb-12 pt-16 sm:px-10 md:max-w-[38rem] md:flex-row md:px-14 md:py-10 lg:flex-col lg:px-5 lg:pb-12 lg:pt-16 xl:px-12">
+          <motion.li
+            className="flex-col-center max-w-[20rem] gap-14 rounded-lg bg-custom-dark-cyan px-4 pb-12 pt-16 sm:px-10 md:max-w-[38rem] md:flex-row md:px-14 md:py-10 lg:flex-col lg:px-5 lg:pb-12 lg:pt-16 xl:px-12"
+            variants={fadeInVariants}
+          >
             <img
               src={truckImg}
               alt=""
@@ -199,12 +246,19 @@ const Home = () => {
                 guaranteed.
               </p>
             </div>
-          </li>
-        </ul>
+          </motion.li>
+        </motion.ul>
       </div>
 
       <div className="flex-col-center mx-auto mt-28 max-w-[70rem] pb-28 lg:mt-48 lg:pb-48">
-        <h2 className="text-custom-dark-grey md:self-start">How it works</h2>
+        <motion.h2
+          className="text-custom-dark-grey md:self-start"
+          initial={{ scale: 0.25 }}
+          whileInView={{ scale: 1 }}
+          viewport={{ once: true, amount: 0.1 }}
+        >
+          How it works
+        </motion.h2>
 
         <ol className="flex-col-center gap-14 pt-20 text-center md:flex-row md:items-start md:gap-8 md:pt-28 md:text-left lg:gap-24 lg:pt-36">
           <li className="relative max-w-96 before:font-fraunces before:text-3xl before:font-black before:text-custom-pale-orange before:content-['0'_counter(list-item)] lg:pt-8">
