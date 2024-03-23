@@ -26,6 +26,18 @@ const fadeInVariants = {
   },
 };
 
+const revealVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.4,
+      ease: "easeInOut",
+    },
+  },
+};
+
 const Home = () => {
   return (
     <section className="max-w-7xl">
@@ -53,9 +65,33 @@ const Home = () => {
           />
         </picture>
         <article className="flex-col-center absolute inset-0 mx-auto px-5 text-custom-light-cream after:absolute after:inset-0 after:bg-black after:bg-opacity-10 mobile:text-center md:ml-0 md:items-start md:px-[3.75rem] xl:px-20">
-          <h1 className="z-10 max-w-[11ch] text-xl leading-none xs:text-2xl md:text-[3rem] lg:text-3xl">
-            Great coffee made simple.
-          </h1>
+          <motion.h1
+            className="z-10 max-w-[11ch] text-xl leading-none xs:text-2xl md:text-[3rem] lg:text-3xl"
+            variants={revealVariants}
+            initial="hidden"
+            whileInView="visible"
+            transition={{ staggerChildren: 0.1 }}
+            viewport={{ once: true, amount: 1 }}
+          >
+            {"Great coffee made simple.".split(" ").map((word, index) => (
+              <motion.span
+                key={word + "-" + index}
+                className="inline-block"
+                variants={revealVariants}
+              >
+                {word.split("").map((letter, index) => (
+                  <motion.span
+                    key={letter + "-" + index}
+                    className="inline-block"
+                    variants={revealVariants}
+                  >
+                    {letter}
+                  </motion.span>
+                ))}
+                <span className="inline-block">&nbsp;</span>
+              </motion.span>
+            ))}
+          </motion.h1>
           <p className="z-10 mb-10 mt-6 max-w-80 opacity-80 md:max-w-[25rem] lg:mb-14 lg:mt-8">
             Start your mornings with the world’s best coffees. Try our expertly
             curated artisan coffees from our best roasters delivered directly to
@@ -73,12 +109,16 @@ const Home = () => {
       <div className="relative mt-32 md:mt-40 lg:mt-44">
         <motion.h2
           className="absolute -z-10 w-full bg-gradient-to-b from-custom-dark-grey bg-clip-text text-center text-[2.3rem] leading-none text-transparent xs:text-[2.8rem] sm:text-[3.8rem] md:text-[6rem] lg:text-[9rem] xl:text-[10.5rem]"
-          variants={fadeInVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.25 }}
+          transition={{ staggerChildren: 0.5 }}
+          viewport={{ once: true, amount: 1 }}
         >
-          our collection
+          {"our collection".split("").map((letter, index) => (
+            <motion.span key={letter + "-" + index} variants={revealVariants}>
+              {letter}
+            </motion.span>
+          ))}
         </motion.h2>
 
         <ul className="flex-col-center mx-auto gap-12 pt-24 md:pt-16 lg:pt-24 xl:max-w-[70rem] xl:flex-row xl:items-start xl:pt-28">
@@ -186,7 +226,7 @@ const Home = () => {
           variants={fadeInVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.15 }}
+          viewport={{ once: true, amount: 0.5 }}
         >
           <motion.li
             className="flex-col-center max-w-[20rem] gap-14 rounded-lg bg-custom-dark-cyan px-4 pb-12 pt-16 sm:px-10 md:max-w-[38rem] md:flex-row md:px-14 md:py-10 lg:flex-col lg:px-5 lg:pb-12 lg:pt-16 xl:px-12"
@@ -255,7 +295,7 @@ const Home = () => {
           className="text-custom-dark-grey md:self-start"
           initial={{ scale: 0.25 }}
           whileInView={{ scale: 1 }}
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={{ once: true, amount: 1 }}
         >
           How it works
         </motion.h2>
