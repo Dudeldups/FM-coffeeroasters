@@ -92,11 +92,17 @@ const Home = () => {
               </motion.span>
             ))}
           </motion.h1>
-          <p className="z-10 mb-10 mt-6 max-w-80 opacity-80 md:max-w-[25rem] lg:mb-14 lg:mt-8">
+          <motion.p
+            variants={revealVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="z-10 mb-10 mt-6 max-w-80 opacity-80 md:max-w-[25rem] lg:mb-14 lg:mt-8"
+          >
             Start your mornings with the world’s best coffees. Try our expertly
             curated artisan coffees from our best roasters delivered directly to
             your door, at your schedule.
-          </p>
+          </motion.p>
           <Link
             className={`z-10 rounded-lg bg-custom-dark-cyan px-8 py-4 font-fraunces text-md font-black leading-6 text-custom-light-cream transition-colors hover:bg-custom-pale-orange hover:text-black focus-visible:bg-custom-pale-orange focus-visible:text-black disabled:bg-custom-dark-grey`}
             to="/subscribe"
@@ -111,7 +117,7 @@ const Home = () => {
           className="absolute -z-10 w-full bg-gradient-to-b from-custom-dark-grey bg-clip-text text-center text-[2.3rem] leading-none text-transparent xs:text-[2.8rem] sm:text-[3.8rem] md:text-[6rem] lg:text-[9rem] xl:text-[10.5rem]"
           initial="hidden"
           whileInView="visible"
-          transition={{ staggerChildren: 0.5 }}
+          transition={{ staggerChildren: 0.25 }}
           viewport={{ once: true, amount: 1 }}
         >
           {"our collection".split("").map((letter, index) => (
@@ -226,7 +232,7 @@ const Home = () => {
           variants={fadeInVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.25 }}
         >
           <motion.li
             className="flex-col-center max-w-[20rem] gap-14 rounded-lg bg-custom-dark-cyan px-4 pb-12 pt-16 sm:px-10 md:max-w-[38rem] md:flex-row md:px-14 md:py-10 lg:flex-col lg:px-5 lg:pb-12 lg:pt-16 xl:px-12"
@@ -293,9 +299,17 @@ const Home = () => {
       <div className="flex-col-center mx-auto mt-28 max-w-[70rem] pb-28 lg:mt-48 lg:pb-48">
         <motion.h2
           className="text-custom-dark-grey md:self-start"
-          initial={{ scale: 0.25 }}
-          whileInView={{ scale: 1 }}
+          initial={{ scaleY: 0.1, x: 1000 }}
+          whileInView={{ scaleY: [0.1, 0.1, 1], x: [1000, 0, 0] }}
           viewport={{ once: true, amount: 1 }}
+          transition={{
+            once: true,
+            delay: 0.3,
+            duration: 2,
+            type: "spring",
+            stiffness: 50,
+            times: [0, 0.5, 1],
+          }}
         >
           How it works
         </motion.h2>
@@ -335,12 +349,25 @@ const Home = () => {
           </li>
         </ol>
 
-        <Link
-          className={`mt-20 rounded-lg bg-custom-dark-cyan px-8 py-4 font-fraunces text-md font-black leading-6 text-custom-light-cream transition-colors hover:bg-custom-pale-orange hover:text-black focus-visible:bg-custom-pale-orange focus-visible:text-black disabled:bg-custom-dark-grey md:self-start lg:mt-16`}
-          to="/subscribe"
+        <motion.span
+          initial={{ scale: 0.5 }}
+          whileInView={{ scale: 1 }}
+          viewport={{ once: true }}
+          transition={{
+            once: true,
+            delay: 0.2,
+            duration: 1,
+            type: "spring",
+          }}
+          className="mt-20 block md:self-start"
         >
-          Create your plan
-        </Link>
+          <Link
+            className={`rounded-lg bg-custom-dark-cyan px-8 py-4 font-fraunces text-md font-black leading-6 text-custom-light-cream transition-colors hover:bg-custom-pale-orange hover:text-black focus-visible:bg-custom-pale-orange focus-visible:text-black disabled:bg-custom-dark-grey`}
+            to="/subscribe"
+          >
+            Create your plan
+          </Link>
+        </motion.span>
       </div>
     </section>
   );
