@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 import heroImgAboutMobile from "../assets/about/mobile/image-hero-whitecup.jpg";
 import heroImgAboutTablet from "../assets/about/tablet/image-hero-whitecup.jpg";
 import heroImgAboutDesktop from "../assets/about/desktop/image-hero-whitecup.jpg";
@@ -28,7 +30,10 @@ const AboutUs = () => {
             height={800}
             width={1378}
           />
-          <img
+          <motion.img
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.25, ease: "easeInOut" }}
             src={heroImgAboutMobile}
             loading="lazy"
             alt="A neatly decorated cup of coffe viewed from above"
@@ -37,7 +42,12 @@ const AboutUs = () => {
           />
         </picture>
 
-        <article className="flex-col-center absolute inset-0 mx-auto px-5 text-custom-light-cream after:absolute after:inset-0 after:bg-black after:bg-opacity-30 mobile:text-center md:ml-0 md:items-start md:px-[3.75rem] xl:px-[5rem]">
+        <motion.article
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.25, duration: 1, ease: "easeInOut" }}
+          className="flex-col-center absolute inset-0 mx-auto px-5 text-custom-light-cream after:absolute after:inset-0 after:bg-black after:bg-opacity-30 mobile:text-center md:ml-0 md:items-start md:px-[3.75rem] xl:px-[5rem]"
+        >
           <h1 className="z-10 text-[1.75rem] leading-none md:text-xl lg:text-2xl">
             About Us
           </h1>
@@ -47,7 +57,7 @@ const AboutUs = () => {
             been dedicated to bring the perfect cup - from bean to brew - in
             every shipment.
           </p>
-        </article>
+        </motion.article>
       </div>
 
       <div className="flex-col-center mt-28 gap-12 text-center mobile:max-w-[25rem] md:mt-36 md:grid md:max-w-[45rem] md:grid-flow-col md:grid-cols-[40%_50%] md:justify-between md:gap-0 md:text-left lg:mt-40 lg:max-w-[70rem] lg:gap-20">
@@ -105,7 +115,11 @@ const AboutUs = () => {
             height={320}
             width={573}
           />
-          <img
+          <motion.img
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 1, ease: "easeInOut" }}
             className="mx-auto rounded-lg"
             src={qualityImgMobile}
             loading="lazy"
@@ -135,7 +149,18 @@ const AboutUs = () => {
         </h2>
         <ul className="mt-16 grid gap-20 md:flex md:justify-between md:gap-8 lg:justify-start">
           <li className="flex-1">
-            <img
+            <motion.img
+              initial={{ scale: 0.25 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{
+                duration: 2,
+                type: "spring",
+                stiffness: 50,
+                bounce: 0.5,
+                damping: 10,
+                mass: 5,
+              }}
               className="mobile:mx-auto"
               src={ukImg}
               alt=""
@@ -168,7 +193,18 @@ const AboutUs = () => {
           </li>
 
           <li className="flex-1">
-            <img
+            <motion.img
+              initial={{ scale: 0.25 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{
+                duration: 2,
+                type: "spring",
+                stiffness: 50,
+                bounce: 0.5,
+                damping: 10,
+                mass: 5,
+              }}
               className="mobile:mx-auto"
               src={canadaImg}
               alt=""
@@ -200,7 +236,18 @@ const AboutUs = () => {
           </li>
 
           <li className="flex-1">
-            <img
+            <motion.img
+              initial={{ scale: 0.25 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{
+                duration: 2,
+                type: "spring",
+                stiffness: 50,
+                bounce: 0.5,
+                damping: 10,
+                mass: 5,
+              }}
               className="mobile:mx-auto"
               src={australiaImg}
               alt=""
