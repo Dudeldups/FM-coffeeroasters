@@ -40,10 +40,9 @@ const SubscribeForm = ({ isModalOpen, setIsModalOpen }: SubscribeFormProps) => {
     setValue,
   } = useForm<FieldValues>();
 
-  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+  const onSubmit: SubmitHandler<FieldValues> = async () => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     setIsModalOpen(true);
-    console.log(data);
   };
 
   const prices: Prices = priceData;
