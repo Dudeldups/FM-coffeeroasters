@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import Btn from "./Btn";
 import { FieldValues } from "react-hook-form";
 import Summary from "./Summary";
+import { Link } from "react-router-dom";
 
 interface ModalProps {
   totalPrice: string;
@@ -52,13 +52,15 @@ const Modal = ({ formData, setIsModalOpen, totalPrice }: ModalProps) => {
             <p className="font-fraunces text-xl font-black text-black  mobile:hidden">
               {`$ ${totalPrice} / mo`}
             </p>
-            <Btn
+
+            <Link
+              to="/checkout"
               onClick={() => setIsModalOpen(false)}
-              className="px-2 mobile:w-full"
+              className="z-10 block rounded-lg bg-custom-dark-cyan px-2 py-4 text-center font-fraunces text-md font-black leading-6 text-custom-light-cream transition-colors hover:bg-custom-pale-orange hover:text-black focus-visible:bg-custom-pale-orange focus-visible:text-black disabled:bg-custom-dark-grey mobile:w-full"
             >
               Checkout{" "}
               <span className="md:hidden">{` - $ ${totalPrice} / mo`}</span>
-            </Btn>
+            </Link>
           </div>
         </div>
       </div>
