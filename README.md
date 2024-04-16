@@ -53,6 +53,7 @@ Your users should be able to:
 - React Router
 - React Hook Form
 - Tailwind CSS
+- Framer Motion
 
 ## Author
 

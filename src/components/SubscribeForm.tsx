@@ -6,6 +6,7 @@ import priceData from "../data/prices.json";
 import Btn from "./Btn";
 import Summary from "./Summary";
 import Modal from "./Modal";
+import Loading from "./Loading";
 
 interface SubscribeFormProps {
   isModalOpen: boolean;
@@ -324,7 +325,7 @@ const SubscribeForm = ({ isModalOpen, setIsModalOpen }: SubscribeFormProps) => {
         </div>
 
         <Btn className="mt-14" isDisabled={isSubmitting || currentFormStep < 6}>
-          {isSubmitting ? "Loading..." : "Create my plan!"}
+          {isSubmitting ? <Loading /> : "Create my plan!"}
         </Btn>
       </form>
 

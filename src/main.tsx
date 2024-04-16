@@ -6,6 +6,7 @@ import ErrorPage from "./ErrorPage.tsx";
 import Home from "./routes/Home.tsx";
 import AboutUs from "./routes/AboutUs.tsx";
 import Subscribe from "./routes/Subscribe.tsx";
+import Checkout from "./routes/Checkout.tsx";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
         path: "/subscribe",
         element: <Subscribe />,
       },
+      { path: "checkout", element: <Checkout /> },
       {
         path: "*",
         element: <ErrorPage />,

@@ -3,6 +3,19 @@ import coffeeroastersLogoWhite from "../assets/shared/desktop/logo-white.svg";
 import Facebook from "./logos/Facebook";
 import Instagram from "./logos/Instagram";
 import Twitter from "./logos/Twitter";
+import { motion } from "framer-motion";
+
+const colorVariants = {
+  hidden: { color: "#FEFCF7" },
+  visible: {
+    color: ["#FEFCF7", "#FDD6BA", "#FDD6BA", "#FEFCF7"],
+    transition: {
+      duration: 3.5,
+      ease: "easeInOut",
+      staggerChildren: 3.5,
+    },
+  },
+};
 
 const Footer = () => {
   return (
@@ -45,8 +58,14 @@ const Footer = () => {
           </ul>
         </nav>
 
-        <ul className="mt-10 flex items-center justify-center gap-6 text-custom-light-cream md:mt-14 lg:ml-auto lg:mt-0">
-          <li>
+        <motion.ul
+          variants={colorVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 1 }}
+          className="mt-10 flex items-center justify-center gap-6 text-custom-light-cream md:mt-14 lg:ml-auto lg:mt-0"
+        >
+          <motion.li variants={colorVariants}>
             <a
               className="transition-colors hover:text-custom-pale-orange focus-visible:text-custom-pale-orange"
               href="/"
@@ -54,8 +73,8 @@ const Footer = () => {
             >
               <Facebook />
             </a>
-          </li>
-          <li>
+          </motion.li>
+          <motion.li variants={colorVariants}>
             <a
               className="transition-colors hover:text-custom-pale-orange focus-visible:text-custom-pale-orange"
               href="/"
@@ -63,8 +82,8 @@ const Footer = () => {
             >
               <Twitter />
             </a>
-          </li>
-          <li>
+          </motion.li>
+          <motion.li variants={colorVariants}>
             <a
               className="transition-colors hover:text-custom-pale-orange focus-visible:text-custom-pale-orange"
               href="/"
@@ -72,8 +91,8 @@ const Footer = () => {
             >
               <Instagram />
             </a>
-          </li>
-        </ul>
+          </motion.li>
+        </motion.ul>
       </div>
     </footer>
   );

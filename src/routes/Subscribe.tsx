@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import SubscribeForm from "../components/SubscribeForm";
+import { motion } from "framer-motion";
+
 import heroImgSubscribeMobile from "../assets/plan/mobile/image-hero-blackcup.jpg";
 import heroImgSubscribeTablet from "../assets/plan/tablet/image-hero-blackcup.jpg";
 import heroImgSubscribeDesktop from "../assets/plan/desktop/image-hero-blackcup.jpg";
@@ -31,7 +33,10 @@ const Subscribe = () => {
             height={800}
             width={1378}
           />
-          <img
+          <motion.img
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.25, ease: "easeInOut" }}
             src={heroImgSubscribeMobile}
             loading="lazy"
             alt="A coffee cup with a decorated cream flower."
@@ -40,7 +45,12 @@ const Subscribe = () => {
           />
         </picture>
 
-        <article className="flex-col-center absolute inset-0 mx-auto px-5 text-custom-light-cream after:absolute after:inset-0 after:bg-black after:bg-opacity-30 mobile:text-center md:ml-0 md:items-start md:px-[3.75rem] xl:px-20">
+        <motion.article
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.25, duration: 1, ease: "easeInOut" }}
+          className="flex-col-center absolute inset-0 mx-auto px-5 text-custom-light-cream after:absolute after:inset-0 after:bg-black after:bg-opacity-30 mobile:text-center md:ml-0 md:items-start md:px-[3.75rem] xl:px-20"
+        >
           <h1 className="z-10 text-xl leading-none xs:text-2xl md:text-[3rem] lg:text-3xl">
             Create a plan
           </h1>
@@ -49,7 +59,7 @@ const Subscribe = () => {
             or next week. For whatever brew method you use. For choice, for
             convenience, for quality.
           </p>
-        </article>
+        </motion.article>
       </div>
 
       <div className="mt-28 w-[calc(100%+25rem)] rounded-lg bg-custom-dark-blue py-20 md:mt-36 md:pt-24 lg:mt-40 lg:w-auto lg:pt-28">
